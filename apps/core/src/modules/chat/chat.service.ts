@@ -1,32 +1,39 @@
 import { Role } from "../../../../../prisma/generated/client/enums.js";
+
 import { createMessage, getRecentMessages } from "./chat.repository.js";
 
-import type { ChatInput } from "./chat.schema.js";
-import type { ChatResponse } from "./chat.types.js";
+import { generateAIResponse } from "./chat.ai.js";
 
-// 🧠 Main Bhishma chat logic
-export async function chatService(input: ChatInput): Promise<ChatResponse> {
-  // 💾 Save user message
+export async function chatService(data: { userId: string; content: string }) {
+  // 1️⃣ Save user message 👤
   await createMessage({
-    userId: input.userId,
-    content: input.message,
+    userId: data.userId,
+    content: data.content,
     role: Role.user,
   });
 
-  // 🧠 Load recent memory
-  const recentMessages = await getRecentMessages(input.userId);
+  // 2️⃣ Get recent conversation 🧠
+  const recentMessages = await getRecentMessages(data.userId);
 
-  // 🤖 Temporary fake AI response
-  const reply = `Bhishma remembers ${recentMessages.length} messages 👑`;
+  // 3️⃣ Convert DB messages → AI format 🤖
+  const formattedMessages = recentMessages.map((message) => ({
+    role: message.role as "user" | "assistant",
 
-  // 💾 Save assistant response
+    content: message.content,
+  }));
+
+  // 4️⃣ Generate AI response ✨
+  const aiReply = await generateAIResponse(formattedMessages);
+
+  // 5️⃣ Save assistant reply 🤖
   await createMessage({
-    userId: input.userId,
-    content: reply,
+    userId: data.userId,
+    content: aiReply,
     role: Role.assistant,
   });
 
+  // 6️⃣ Return response 🚀
   return {
-    reply,
+    reply: aiReply,
   };
 }

@@ -1,10 +1,26 @@
 import { Router, type Router as ExpressRouter } from "express";
 
+
 import { chatController } from "./chat.controller.js";
 
-const chatRouter: ExpressRouter = Router();
+import { validate } from "../../middleware/validate.middleware.js";
 
-// 💬 Chat endpoint
-chatRouter.post("/", chatController);
+import { chatSchema } from "./chat.schema.js";
 
-export default chatRouter;
+
+
+const router: ExpressRouter = Router();
+
+
+// 💬 Chat route
+router.post(
+  "/",
+
+  validate(chatSchema),
+
+  chatController
+);
+
+
+
+export default router;
