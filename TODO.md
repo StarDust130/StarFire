@@ -71,8 +71,8 @@ Build Bhishma memory engine.
 
 ### 🔥 Tasks
 
-* [ ] Save conversations
-* [ ] Retrieve conversations
+* ✅ Save conversations
+* ✅ Retrieve conversations
 * [ ] Add short-term memory
 * [ ] Add long-term memory
 * [ ] Add semantic memory
