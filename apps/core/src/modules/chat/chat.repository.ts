@@ -15,15 +15,17 @@ export async function createMessage(data: {
 
 // 🧠 Get recent messages
 export async function getRecentMessages(userId: string) {
-  return prisma.message.findMany({
+  const messages = await prisma.message.findMany({
     where: {
       userId,
     },
 
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
 
     take: 10,
   });
+
+  return messages.reverse();
 }
