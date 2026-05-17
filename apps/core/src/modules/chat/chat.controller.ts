@@ -1,24 +1,28 @@
-import type { Request, Response, NextFunction } from "express";
+import type { Request, Response } from "express";
 
 import { chatSchema } from "./chat.schema.js";
+
 import { chatService } from "./chat.service.js";
 
-// 🎮 Handle incoming chat request
-export async function chatController(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
-  try {
-    // 🧠 Validate request body
-    const input = chatSchema.parse(req.body);
+import { asyncHandler } from "../../utils/async-handler.js";
 
-    // 🤖 Run Bhishma chat flow
-    const response = await chatService(input);
+import { sendResponse } from "../../utils/send-response.js";
 
-    // ✅ Send response
-    res.status(200).json(response);
-  } catch (error) {
-    next(error);
-  }
-}
+export const chatController = asyncHandler(
+  async (req: Request, res: Response): Promise<void> => {
+    // 1️⃣ Validate body ✅
+    const body = chatSchema.parse(req.body);
+
+    // 2️⃣ Run business logic 🧠
+    const { userId: uid, message } = body as { userId: string; message: string };
+    const payload = { userId: uid, content: message };
+    const result = await chatService(payload);
+
+    // 3️⃣ Send response 🚀
+    sendResponse(res, {
+      message: "AI response generated successfully 👑",
+
+      data: result,
+    });
+  },
+);
