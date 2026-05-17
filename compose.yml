@@ -1,35 +1,42 @@
-
 services:
   postgres:
     image: postgres:17
     container_name: bhishma-postgres
+
     restart: unless-stopped
+
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: thor130
       POSTGRES_DB: bhishma
+
     ports:
-      - "5432:5432"
+      - "5433:5432"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   redis:
     image: redis:8
     container_name: bhishma-redis
+
     restart: unless-stopped
+
     ports:
       - "6379:6379"
 
   qdrant:
     image: qdrant/qdrant:latest
     container_name: bhishma-qdrant
+
     restart: unless-stopped
+
     ports:
       - "6333:6333"
+
     volumes:
       - qdrant_data:/qdrant/storage
 
 volumes:
   postgres_data:
   qdrant_data:
-
