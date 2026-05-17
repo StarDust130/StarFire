@@ -1,11 +1,14 @@
 import type {  Request, Response } from "express";
 
 export function errorMiddleware(
-  error: Error,
-  _req: Request,
+  error: { statusCode?: number; message?: string },
+  req: Request,
   res: Response,
 ) {
-  res.status(500).json({
-    message: error.message,
+  console.error(error);
+
+  return res.status(error.statusCode || 500).json({
+    success: false,
+    message: error.message || "Internal Server Error",
   });
 }
