@@ -6,18 +6,23 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "db:generate": "prisma generate --schema prisma/schema.prisma",
+    "db:push": "prisma db push --schema prisma/schema.prisma",
+    "postinstall": "prisma generate --schema prisma/schema.prisma"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@prisma/client": "6.19.3",
+    "@types/node": "^25.8.0",
     "eslint": "^10.3.0",
     "prettier": "^3.8.3",
+    "prisma": "6.19.3",
     "turbo": "^2.9.14",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.3"
   },
   "dependencies": {
-    "@prisma/client": "^7.8.0",
-    "prisma": "^7.8.0"
+    "dotenv": "^17.4.2"
   }
 }

@@ -185,7 +185,7 @@ pnpm install
 docker compose up -d
 
 # Sync database
-pnpm --filter database prisma db push
+pnpm db:push
 
 # Launch development servers
 pnpm dev
