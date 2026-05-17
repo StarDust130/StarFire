@@ -14,8 +14,8 @@ export const chatController = asyncHandler(
     const body = chatSchema.parse(req.body);
 
     // 2️⃣ Run business logic 🧠
-    const { userId: uid, message } = body as { userId: string; message: string };
-    const payload = { userId: uid, content: message };
+    const { userId: uid, content } = body as { userId: string; content: string };
+    const payload = { userId: uid, content };
     const result = await chatService(payload);
 
     // 3️⃣ Send response 🚀
