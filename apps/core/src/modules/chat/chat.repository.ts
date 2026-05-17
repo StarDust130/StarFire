@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import type { Role } from "../../../../../prisma/generated/client/enums.js";
 import { prisma } from "../../lib/prisma.js";
 
 export async function createMessage(data: {

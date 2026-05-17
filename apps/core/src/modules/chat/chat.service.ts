@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import { Role } from "../../../../../prisma/generated/client/enums.js";
 import { createMessage, getRecentMessages } from "./chat.repository.js";
 
 import type { ChatInput } from "./chat.schema.js";
