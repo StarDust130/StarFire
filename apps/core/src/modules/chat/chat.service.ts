@@ -3,6 +3,7 @@ import { Role } from "../../../../../prisma/generated/client/enums.js";
 import { createMessage, getRecentMessages } from "./chat.repository.js";
 
 import { generateAIResponse } from "./chat.ai.js";
+import { buildConversationContext } from "./chat.memory.js";
 
 export async function chatService(data: { userId: string; content: string }) {
   // 1️⃣ Save user message 👤
@@ -15,15 +16,11 @@ export async function chatService(data: { userId: string; content: string }) {
   // 2️⃣ Get recent conversation 🧠
   const recentMessages = await getRecentMessages(data.userId);
 
-  // 3️⃣ Convert DB messages → AI format 🤖
-  const formattedMessages = recentMessages.map((message) => ({
-    role: message.role as "user" | "assistant",
-
-    content: message.content,
-  }));
+  // 3️⃣ Build conversation context 🧩
+  const context = buildConversationContext(recentMessages);
 
   // 4️⃣ Generate AI response ✨
-  const aiReply = await generateAIResponse(formattedMessages);
+  const aiReply = await generateAIResponse(context);
 
   // 5️⃣ Save assistant reply 🤖
   await createMessage({
