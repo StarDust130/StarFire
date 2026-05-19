@@ -5,8 +5,9 @@ import { createMessage, getRecentMessages } from "./chat.repository.js";
 import { generateAIResponse } from "./chat.ai.js";
 import { buildConversationContext } from "./chat.memory.js";
 
+//! Core chat service handling the entire flow of a chat interaction 🗣️🤖
 export async function chatService(data: { userId: string; content: string }) {
-  // 1️⃣ Save user message 👤
+  // 1️⃣ Save user message in DB 👤
   await createMessage({
     userId: data.userId,
     content: data.content,
