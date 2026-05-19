@@ -4,6 +4,7 @@ import { createMessage, getRecentMessages } from "./chat.repository.js";
 
 import { generateAIResponse } from "./chat.ai.js";
 import { buildConversationContext } from "./chat.memory.js";
+import { processMemory } from "../memory/memory.service.js";
 
 //! Core chat service handling the entire flow of a chat interaction 🗣️🤖
 export async function chatService(data: { userId: string; content: string }) {
@@ -30,7 +31,14 @@ export async function chatService(data: { userId: string; content: string }) {
     role: Role.assistant,
   });
 
-  // 6️⃣ Return response 🚀
+  //6️⃣ 🧠 Process long-term memory 
+  await processMemory({
+    userId: data.userId,
+
+    message: data.content,
+  });
+
+  // 7️⃣  Return response 🚀
   return {
     reply: aiReply,
   };
