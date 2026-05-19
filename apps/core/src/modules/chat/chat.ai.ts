@@ -5,7 +5,10 @@ type Message = {
   content: string;
 };
 
-export async function generateAIResponse(messages: Message[]) {
+export async function generateAIResponse(
+  messages: Message[],
+   userProfile?: string
+  ) {
   try {
     const completion = await groq.chat.completions.create({
       model: "llama-3.1-8b-instant",
@@ -129,8 +132,11 @@ Avoid:
 
 Your goal:
 Feel like a trustworthy intelligent companion, not a corporate chatbot or exaggerated AI persona.
+
+${userProfile || ""}
 `,
         },
+
         ...messages,
       ],
     });
