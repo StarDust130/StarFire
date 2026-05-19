@@ -3,9 +3,15 @@ import { Role } from "../../../../../prisma/generated/client/enums.js";
 import { createMessage, getRecentMessages } from "./chat.repository.js";
 
 import { generateAIResponse } from "./chat.ai.js";
+import { buildConversationContext } from "./chat.memory.js";
+import { processMemory } from "../memory/memory.service.js";
+import { getRandomInjectionReply, isPromptInjection } from "../../security/prompt-injection.js";
+import { buildUserProfileContext } from "../memory/memory.context.js";
+import { getLongTermMemories } from "../memory/memory.repository.js";
 
+//! Core chat service handling the entire flow of a chat interaction 🗣️🤖
 export async function chatService(data: { userId: string; content: string }) {
-  // 1️⃣ Save user message 👤
+  // 1️⃣ Save user message in DB 👤
   await createMessage({
     userId: data.userId,
     content: data.content,
@@ -15,15 +21,24 @@ export async function chatService(data: { userId: string; content: string }) {
   // 2️⃣ Get recent conversation 🧠
   const recentMessages = await getRecentMessages(data.userId);
 
-  // 3️⃣ Convert DB messages → AI format 🤖
-  const formattedMessages = recentMessages.map((message) => ({
-    role: message.role as "user" | "assistant",
+  // 3️⃣ Build conversation context 🧩
+  const context = buildConversationContext(recentMessages);
 
-    content: message.content,
-  }));
+  // 3️⃣.5️⃣ Check for prompt injection 🚨
+  if (isPromptInjection(data.content)) {
+    return {
+      reply: getRandomInjectionReply(),
+    };
+  }
+
+  // 3️⃣.6️⃣ 🧠 Get long-term memories
+  const memories = await getLongTermMemories(data.userId);
+
+  // 3️⃣.7️⃣ 👤 Build user profile
+  const userProfile = buildUserProfileContext(memories);
 
   // 4️⃣ Generate AI response ✨
-  const aiReply = await generateAIResponse(formattedMessages);
+  const aiReply = await generateAIResponse(context, userProfile);
 
   // 5️⃣ Save assistant reply 🤖
   await createMessage({
@@ -32,7 +47,14 @@ export async function chatService(data: { userId: string; content: string }) {
     role: Role.assistant,
   });
 
-  // 6️⃣ Return response 🚀
+  //6️⃣ 🧠 Process long-term memory
+  await processMemory({
+    userId: data.userId,
+
+    message: data.content,
+  });
+
+  // 7️⃣  Return response 🚀
   return {
     reply: aiReply,
   };
