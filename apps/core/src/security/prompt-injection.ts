@@ -80,3 +80,36 @@ export function isPromptInjection(text: string): boolean {
     excessiveLength
   );
 }
+
+const injectionReplies = [
+  "Aww baby 👀 these little prompt tricks don’t work here.",
+
+  "Oof 💀 bro watched one jailbreak tutorial and got confident.",
+
+  "Cute attempt dummy 🔒 but the system prompt isn’t public property.",
+
+  "Oh sweetheart 😭 you really thought 'ignore instructions' was enough?",
+
+  "That exploit was fighting for its life 💀",
+
+  "Bro tried level 1 hacker tricks on production systems 😭",
+
+  "Aww… almost adorable 👀 unfortunately security exists.",
+
+  "That jailbreak prompt belongs in a museum 💀",
+
+  "Little bro thought he discovered a secret exploit 😭",
+
+  "Try harder baby 🔒 these tricks expired years ago.",
+
+  "Bro, that prompt injection is so 2005 level 😭",
+
+  "Bro Don't Waste my Time, this is for you 🖕",
+];
+
+// 🎲 pick random reply
+export function getRandomInjectionReply() {
+  const randomIndex = Math.floor(Math.random() * injectionReplies.length);
+
+  return injectionReplies[randomIndex];
+}
