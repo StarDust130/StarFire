@@ -4,6 +4,7 @@ import { createMemory } from "./memory.repository.js";
 
 import { extractMemory } from "./memory.ai.js";
 import { MemoryType } from "../../../../../prisma/generated/client/enums.js";
+import { logger } from "../../lib/logger.js";
 
 export async function processMemory(data: { userId: string; message: string }) {
   // 1️⃣ Extract memory 🧠
@@ -13,6 +14,8 @@ export async function processMemory(data: { userId: string; message: string }) {
   if (!memory || memory === "null") {
     return null;
   }
+
+  logger.debug(`Extracted Memory🧠: ${memory}`);
 
   // 3️⃣ Save memory 💾
   return createMemory({
