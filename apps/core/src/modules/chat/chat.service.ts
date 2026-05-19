@@ -6,6 +6,8 @@ import { generateAIResponse } from "./chat.ai.js";
 import { buildConversationContext } from "./chat.memory.js";
 import { processMemory } from "../memory/memory.service.js";
 import { getRandomInjectionReply, isPromptInjection } from "../../security/prompt-injection.js";
+import { buildUserProfileContext } from "../memory/memory.context.js";
+import { getLongTermMemories } from "../memory/memory.repository.js";
 
 //! Core chat service handling the entire flow of a chat interaction 🗣️🤖
 export async function chatService(data: { userId: string; content: string }) {
@@ -29,8 +31,14 @@ export async function chatService(data: { userId: string; content: string }) {
     };
   }
 
+  // 3️⃣.6️⃣ 🧠 Get long-term memories
+  const memories = await getLongTermMemories(data.userId);
+
+  // 3️⃣.7️⃣ 👤 Build user profile
+  const userProfile = buildUserProfileContext(memories);
+
   // 4️⃣ Generate AI response ✨
-  const aiReply = await generateAIResponse(context);
+  const aiReply = await generateAIResponse(context, userProfile);
 
   // 5️⃣ Save assistant reply 🤖
   await createMessage({
