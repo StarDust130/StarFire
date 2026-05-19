@@ -1,4 +1,5 @@
-import { MemoryType } from "../../../../../prisma/generated/client/client.js";
+
+import { MemoryType } from "../../../../../prisma/generated/client/enums.js";
 import { prisma } from "../../lib/prisma.js";
 
 export async function createMemory(data: {
