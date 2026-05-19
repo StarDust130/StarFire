@@ -74,7 +74,7 @@ Build Bhishma memory engine.
 * ✅ Save conversations
 * ✅ Retrieve conversations
 * ✅ Add short-term memory
-* [ ] Add long-term memory
+* ✅ Add long-term memory
 * [ ] Add semantic memory
 * [ ] Add embeddings
 * [ ] Connect Qdrant
