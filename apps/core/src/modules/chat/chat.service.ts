@@ -5,6 +5,7 @@ import { createMessage, getRecentMessages } from "./chat.repository.js";
 import { generateAIResponse } from "./chat.ai.js";
 import { buildConversationContext } from "./chat.memory.js";
 import { processMemory } from "../memory/memory.service.js";
+import { isPromptInjection } from "../../security/prompt-injection.js";
 
 //! Core chat service handling the entire flow of a chat interaction 🗣️🤖
 export async function chatService(data: { userId: string; content: string }) {
@@ -21,6 +22,13 @@ export async function chatService(data: { userId: string; content: string }) {
   // 3️⃣ Build conversation context 🧩
   const context = buildConversationContext(recentMessages);
 
+  // 3️⃣.5️⃣ Check for prompt injection 🚨
+  if (isPromptInjection(data.content)) {
+    return {
+      reply: "Nice try Dummy, 👀 but I can’t reveal internal instructions.",
+    };
+  }
+
   // 4️⃣ Generate AI response ✨
   const aiReply = await generateAIResponse(context);
 
@@ -31,7 +39,7 @@ export async function chatService(data: { userId: string; content: string }) {
     role: Role.assistant,
   });
 
-  //6️⃣ 🧠 Process long-term memory 
+  //6️⃣ 🧠 Process long-term memory
   await processMemory({
     userId: data.userId,
 
