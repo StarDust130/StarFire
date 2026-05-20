@@ -4,7 +4,6 @@ import { createMessage, getRecentMessages } from "./chat.repository.js";
 
 import { generateAIResponse } from "./chat.ai.js";
 import { buildConversationContext } from "./chat.memory.js";
-import { processMemory } from "../memory/memory.service.js";
 import { getRandomInjectionReply, isPromptInjection } from "../../security/prompt-injection.js";
 import { buildUserProfileContext } from "../memory/memory.context.js";
 import { getLongTermMemories } from "../memory/memory.repository.js";
@@ -12,6 +11,7 @@ import { getLongTermMemories } from "../memory/memory.repository.js";
 import { searchRelevantMemories } from "../memory/memory.vector.js";
 
 import { buildSemanticMemoryContext } from "../memory/memory.semantic.js";
+import { memoryQueue } from "../../queue/memory.queue.js";
 
 
 //! Core chat service handling the entire flow of a chat interaction 🗣️🤖
@@ -72,12 +72,16 @@ export async function chatService(data: { userId: string; content: string }) {
     role: Role.assistant,
   });
 
-  //6️⃣ 🧠 Process & Save (long-term memory) in PostgreSQL & Qdrant 🐦‍🔥
-  await processMemory({
-    userId: data.userId,
+  // 6️⃣ Queue memory processing ⚡
+  await memoryQueue.add(
+    "process-memory",
 
-    message: data.content,
-  });
+    {
+      userId: data.userId,
+
+      message: data.content,
+    },
+  );
 
   // 7️⃣  Return response 🚀
   return {
