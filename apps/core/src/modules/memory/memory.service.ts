@@ -6,24 +6,25 @@ import { scoreMemory } from "./memory.score.js";
 
 import { saveMemoryVector } from "./memory.vector.js";
 
+import { summarizeMemories } from "./memory.summary.js";
+
 import { MemoryType } from "../../../../../prisma/generated/client/enums.js";
 
 import { logger } from "../../lib/logger.js";
-import { summarizeMemories } from "./memory.summary.js";
 
 export async function processMemory(data: { userId: string; message: string }) {
   // 1️⃣ Extract memory 🧠
   const memory = await extractMemory(data.message);
 
   // 2️⃣ Ignore useless memory ❌
-  if (!memory || memory === "null") {
+  if (!memory) {
     return null;
   }
 
-  // 3️⃣ Score memory importance ⭐
+  // 3️⃣ Score importance ⭐
   const score = await scoreMemory(memory);
 
-  // 4️⃣ Ignore weak memories ❌
+  // 4️⃣ Ignore weak memory ❌
   if (score < 6) {
     logger.debug("Weak memory ignored ❌");
 
@@ -56,14 +57,32 @@ export async function processMemory(data: { userId: string; message: string }) {
     score,
   );
 
-  // 7️⃣ Get all memories 🧠
+  // 7️⃣ Get all long-term memories 🧠
   const allMemories = await getLongTermMemories(data.userId);
 
-  // 8️⃣ Summarize if too many memories ✨
-  if (allMemories.length > 50) {
+  // 8️⃣ Summarize occasionally ✨
+  const shouldSummarize =
+    allMemories.length > 0 && allMemories.length % 25 === 0;
+
+  if (shouldSummarize) {
+    logger.debug("Creating memory summary ✨");
+
     const summary = await summarizeMemories(allMemories.map((m) => m.content));
 
-    logger.debug(`Memory Summary: ${summary}`);
+    // 💾 Save summary memory
+    if (summary) {
+      await createMemory({
+        userId: data.userId,
+
+        content: summary,
+
+        type: MemoryType.summary,
+
+        importanceScore: 10,
+      });
+
+      logger.debug("Summary saved ✅");
+    }
   }
 
   return savedMemory;
