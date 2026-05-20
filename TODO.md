@@ -92,8 +92,8 @@ Enable async AI workflows.
 
 ### 🔥 Tasks
 
-* [ ] Setup BullMQ
-* [ ] Setup Redis connection
+* ✅ Setup BullMQ
+* ✅ Setup Redis connection
 * [ ] Create job queue
 * [ ] Create memory queue
 * [ ] Create retry handling
