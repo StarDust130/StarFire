@@ -72,7 +72,7 @@ export async function chatService(data: { userId: string; content: string }) {
     role: Role.assistant,
   });
 
-  //6️⃣ 🧠 Process long-term memory
+  //6️⃣ 🧠 Process & Save (long-term memory) in PostgreSQL & Qdrant 🐦‍🔥
   await processMemory({
     userId: data.userId,
 
