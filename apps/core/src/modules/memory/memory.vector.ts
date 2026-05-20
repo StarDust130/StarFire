@@ -7,10 +7,10 @@ export async function saveMemoryVector(
   content: string,
   userId: string,
 ) {
-  // 1️⃣ Create embedding 🧠
+  // 1️⃣ Convert text → vector 🧠
   const vector = await createEmbedding(content);
 
-  // 2️⃣ Save to Qdrant 💾
+  // 2️⃣ Save vector in Qdrant 💾
   await qdrant.upsert(
     "memories",
 
@@ -24,8 +24,8 @@ export async function saveMemoryVector(
           vector,
 
           payload: {
-            content,
             userId,
+            content,
           },
         },
       ],
