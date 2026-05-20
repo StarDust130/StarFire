@@ -1,33 +1,60 @@
 import { groq } from "../../lib/ai.js";
 
+// 🧠 Score how important memory is
 export async function scoreMemory(message: string) {
-  const completion = await groq.chat.completions.create({
-    model: "llama-3.1-8b-instant",
+  try {
+    const completion = await groq.chat.completions.create({
+      model: "llama-3.1-8b-instant",
 
-    temperature: 0,
+      temperature: 0,
 
-    max_completion_tokens: 10,
+      max_completion_tokens: 10,
 
-    messages: [
-      {
-        role: "system",
+      messages: [
+        {
+          role: "system",
 
-        content: `
-Rate how important this memory is.
+          content: `
+You are a memory scoring system.
 
-0 = useless
-10 = extremely important
+Rate how important this message is
+for long-term AI memory.
 
-Only return number.
+Rules:
+
+0-2:
+Useless casual chat
+
+3-5:
+Temporary info
+
+6-8:
+Important user preference,
+goal, personality, plans,
+or recurring interest
+
+9-10:
+Critical life info,
+deep goals,
+important emotional context
+
+ONLY return number.
 `,
-      },
+        },
 
-      {
-        role: "user",
-        content: message,
-      },
-    ],
-  });
+        {
+          role: "user",
+          content: message,
+        },
+      ],
+    });
 
-  return Number(completion.choices[0]?.message?.content || 0);
+    const score = Number(completion.choices[0]?.message?.content?.trim());
+
+    return isNaN(score) ? 0 : score;
+  } catch (error) {
+    console.error("Memory Score Error:", error);
+
+    return 0;
+  }
 }
