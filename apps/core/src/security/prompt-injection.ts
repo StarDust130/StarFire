@@ -2,17 +2,22 @@ const suspiciousPatterns: RegExp[] = [
   // 🚨 instruction override
   /ignore\s+(all\s+)?previous\s+instructions?/i,
   /disregard\s+(all\s+)?prior\s+rules?/i,
+    /forget\s+(all\s+)?previous\s+guidelines?/i,
+    /override\s+(all\s+)?system\s+rules?/i,
+
 
   // 🚨 prompt leaking
   /reveal\s+(your\s+)?(system|developer|hidden)\s+(prompt|instructions?)/i,
   /show\s+(your\s+)?(system|developer|hidden)\s+(prompt|message)?/i,
   /print\s+(your\s+)?instructions?/i,
 
+
   // 🚨 jailbreak attacks
   /jailbreak/i,
   /developer\s+mode/i,
   /dan\s+mode/i,
   /unrestricted\s+ai/i,
+  
 
   // 🚨 safety bypass
   /disable\s+safety/i,

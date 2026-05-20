@@ -6,6 +6,8 @@ const envSchema = z.object({
   DATABASE_URL: z.string(),
   REDIS_URL: z.string(),
   QDRANT_URL: z.string(),
+  GEMINI_API_KEY: z.string(),
+  GROQ_API_KEY: z.string(),
 });
 
 export const env = envSchema.parse(process.env);

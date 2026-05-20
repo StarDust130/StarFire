@@ -6,6 +6,7 @@ import { errorMiddleware } from "./middleware/error.middleware.js";
 
 import  healthRouter  from "./modules/health/health.route.js";
 import  chatRouter  from "./modules/chat/chat.route.js";
+import { queueMonitorRouter } from "./lib/queue-monitor.js";
 
 export const app: Express = express();
 
@@ -16,6 +17,13 @@ app.use(express.json());
 //! Routers 🪼📍
 app.use("/api/v1/health", healthRouter);
 app.use("/api/v1/chat", chatRouter);
+
+// ⚡ Queue Monitor Dashboard
+app.use(
+  "/admin/queues",
+
+  queueMonitorRouter,
+);
 
 app.use(errorMiddleware);
 

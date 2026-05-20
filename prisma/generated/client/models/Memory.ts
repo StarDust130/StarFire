@@ -20,8 +20,18 @@ export type MemoryModel = runtime.Types.Result.DefaultSelection<Prisma.$MemoryPa
 
 export type AggregateMemory = {
   _count: MemoryCountAggregateOutputType | null
+  _avg: MemoryAvgAggregateOutputType | null
+  _sum: MemorySumAggregateOutputType | null
   _min: MemoryMinAggregateOutputType | null
   _max: MemoryMaxAggregateOutputType | null
+}
+
+export type MemoryAvgAggregateOutputType = {
+  importanceScore: number | null
+}
+
+export type MemorySumAggregateOutputType = {
+  importanceScore: number | null
 }
 
 export type MemoryMinAggregateOutputType = {
@@ -29,6 +39,7 @@ export type MemoryMinAggregateOutputType = {
   userId: string | null
   type: $Enums.MemoryType | null
   content: string | null
+  importanceScore: number | null
   createdAt: Date | null
 }
 
@@ -37,6 +48,7 @@ export type MemoryMaxAggregateOutputType = {
   userId: string | null
   type: $Enums.MemoryType | null
   content: string | null
+  importanceScore: number | null
   createdAt: Date | null
 }
 
@@ -45,16 +57,26 @@ export type MemoryCountAggregateOutputType = {
   userId: number
   type: number
   content: number
+  importanceScore: number
   createdAt: number
   _all: number
 }
 
+
+export type MemoryAvgAggregateInputType = {
+  importanceScore?: true
+}
+
+export type MemorySumAggregateInputType = {
+  importanceScore?: true
+}
 
 export type MemoryMinAggregateInputType = {
   id?: true
   userId?: true
   type?: true
   content?: true
+  importanceScore?: true
   createdAt?: true
 }
 
@@ -63,6 +85,7 @@ export type MemoryMaxAggregateInputType = {
   userId?: true
   type?: true
   content?: true
+  importanceScore?: true
   createdAt?: true
 }
 
@@ -71,6 +94,7 @@ export type MemoryCountAggregateInputType = {
   userId?: true
   type?: true
   content?: true
+  importanceScore?: true
   createdAt?: true
   _all?: true
 }
@@ -113,6 +137,18 @@ export type MemoryAggregateArgs<ExtArgs extends runtime.Types.Extensions.Interna
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: MemoryAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: MemorySumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: MemoryMinAggregateInputType
@@ -143,6 +179,8 @@ export type MemoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   _count?: MemoryCountAggregateInputType | true
+  _avg?: MemoryAvgAggregateInputType
+  _sum?: MemorySumAggregateInputType
   _min?: MemoryMinAggregateInputType
   _max?: MemoryMaxAggregateInputType
 }
@@ -152,8 +190,11 @@ export type MemoryGroupByOutputType = {
   userId: string
   type: $Enums.MemoryType
   content: string
+  importanceScore: number
   createdAt: Date
   _count: MemoryCountAggregateOutputType | null
+  _avg: MemoryAvgAggregateOutputType | null
+  _sum: MemorySumAggregateOutputType | null
   _min: MemoryMinAggregateOutputType | null
   _max: MemoryMaxAggregateOutputType | null
 }
@@ -181,6 +222,7 @@ export type MemoryWhereInput = {
   userId?: Prisma.UuidFilter<"Memory"> | string
   type?: Prisma.EnumMemoryTypeFilter<"Memory"> | $Enums.MemoryType
   content?: Prisma.StringFilter<"Memory"> | string
+  importanceScore?: Prisma.IntFilter<"Memory"> | number
   createdAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -190,6 +232,7 @@ export type MemoryOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  importanceScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -202,6 +245,7 @@ export type MemoryWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.UuidFilter<"Memory"> | string
   type?: Prisma.EnumMemoryTypeFilter<"Memory"> | $Enums.MemoryType
   content?: Prisma.StringFilter<"Memory"> | string
+  importanceScore?: Prisma.IntFilter<"Memory"> | number
   createdAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -211,10 +255,13 @@ export type MemoryOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  importanceScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.MemoryCountOrderByAggregateInput
+  _avg?: Prisma.MemoryAvgOrderByAggregateInput
   _max?: Prisma.MemoryMaxOrderByAggregateInput
   _min?: Prisma.MemoryMinOrderByAggregateInput
+  _sum?: Prisma.MemorySumOrderByAggregateInput
 }
 
 export type MemoryScalarWhereWithAggregatesInput = {
@@ -225,6 +272,7 @@ export type MemoryScalarWhereWithAggregatesInput = {
   userId?: Prisma.UuidWithAggregatesFilter<"Memory"> | string
   type?: Prisma.EnumMemoryTypeWithAggregatesFilter<"Memory"> | $Enums.MemoryType
   content?: Prisma.StringWithAggregatesFilter<"Memory"> | string
+  importanceScore?: Prisma.IntWithAggregatesFilter<"Memory"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Memory"> | Date | string
 }
 
@@ -232,6 +280,7 @@ export type MemoryCreateInput = {
   id?: string
   type: $Enums.MemoryType
   content: string
+  importanceScore?: number
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutMemoriesInput
 }
@@ -241,6 +290,7 @@ export type MemoryUncheckedCreateInput = {
   userId: string
   type: $Enums.MemoryType
   content: string
+  importanceScore?: number
   createdAt?: Date | string
 }
 
@@ -248,6 +298,7 @@ export type MemoryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumMemoryTypeFieldUpdateOperationsInput | $Enums.MemoryType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  importanceScore?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutMemoriesNestedInput
 }
@@ -257,6 +308,7 @@ export type MemoryUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumMemoryTypeFieldUpdateOperationsInput | $Enums.MemoryType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  importanceScore?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -265,6 +317,7 @@ export type MemoryCreateManyInput = {
   userId: string
   type: $Enums.MemoryType
   content: string
+  importanceScore?: number
   createdAt?: Date | string
 }
 
@@ -272,6 +325,7 @@ export type MemoryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumMemoryTypeFieldUpdateOperationsInput | $Enums.MemoryType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  importanceScore?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -280,6 +334,7 @@ export type MemoryUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumMemoryTypeFieldUpdateOperationsInput | $Enums.MemoryType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  importanceScore?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -298,7 +353,12 @@ export type MemoryCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  importanceScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type MemoryAvgOrderByAggregateInput = {
+  importanceScore?: Prisma.SortOrder
 }
 
 export type MemoryMaxOrderByAggregateInput = {
@@ -306,6 +366,7 @@ export type MemoryMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  importanceScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -314,7 +375,12 @@ export type MemoryMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  importanceScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type MemorySumOrderByAggregateInput = {
+  importanceScore?: Prisma.SortOrder
 }
 
 export type MemoryCreateNestedManyWithoutUserInput = {
@@ -363,10 +429,19 @@ export type EnumMemoryTypeFieldUpdateOperationsInput = {
   set?: $Enums.MemoryType
 }
 
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type MemoryCreateWithoutUserInput = {
   id?: string
   type: $Enums.MemoryType
   content: string
+  importanceScore?: number
   createdAt?: Date | string
 }
 
@@ -374,6 +449,7 @@ export type MemoryUncheckedCreateWithoutUserInput = {
   id?: string
   type: $Enums.MemoryType
   content: string
+  importanceScore?: number
   createdAt?: Date | string
 }
 
@@ -411,6 +487,7 @@ export type MemoryScalarWhereInput = {
   userId?: Prisma.UuidFilter<"Memory"> | string
   type?: Prisma.EnumMemoryTypeFilter<"Memory"> | $Enums.MemoryType
   content?: Prisma.StringFilter<"Memory"> | string
+  importanceScore?: Prisma.IntFilter<"Memory"> | number
   createdAt?: Prisma.DateTimeFilter<"Memory"> | Date | string
 }
 
@@ -418,6 +495,7 @@ export type MemoryCreateManyUserInput = {
   id?: string
   type: $Enums.MemoryType
   content: string
+  importanceScore?: number
   createdAt?: Date | string
 }
 
@@ -425,6 +503,7 @@ export type MemoryUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumMemoryTypeFieldUpdateOperationsInput | $Enums.MemoryType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  importanceScore?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -432,6 +511,7 @@ export type MemoryUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumMemoryTypeFieldUpdateOperationsInput | $Enums.MemoryType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  importanceScore?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -439,6 +519,7 @@ export type MemoryUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumMemoryTypeFieldUpdateOperationsInput | $Enums.MemoryType
   content?: Prisma.StringFieldUpdateOperationsInput | string
+  importanceScore?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -449,6 +530,7 @@ export type MemorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   userId?: boolean
   type?: boolean
   content?: boolean
+  importanceScore?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["memory"]>
@@ -458,6 +540,7 @@ export type MemorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   userId?: boolean
   type?: boolean
   content?: boolean
+  importanceScore?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["memory"]>
@@ -467,6 +550,7 @@ export type MemorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   userId?: boolean
   type?: boolean
   content?: boolean
+  importanceScore?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["memory"]>
@@ -476,10 +560,11 @@ export type MemorySelectScalar = {
   userId?: boolean
   type?: boolean
   content?: boolean
+  importanceScore?: boolean
   createdAt?: boolean
 }
 
-export type MemoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "type" | "content" | "createdAt", ExtArgs["result"]["memory"]>
+export type MemoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "type" | "content" | "importanceScore" | "createdAt", ExtArgs["result"]["memory"]>
 export type MemoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -500,6 +585,7 @@ export type $MemoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     userId: string
     type: $Enums.MemoryType
     content: string
+    importanceScore: number
     createdAt: Date
   }, ExtArgs["result"]["memory"]>
   composites: {}
@@ -929,6 +1015,7 @@ export interface MemoryFieldRefs {
   readonly userId: Prisma.FieldRef<"Memory", 'String'>
   readonly type: Prisma.FieldRef<"Memory", 'MemoryType'>
   readonly content: Prisma.FieldRef<"Memory", 'String'>
+  readonly importanceScore: Prisma.FieldRef<"Memory", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Memory", 'DateTime'>
 }
     

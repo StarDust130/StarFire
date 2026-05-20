@@ -89,6 +89,7 @@ export const MemoryScalarFieldEnum = {
   userId: 'userId',
   type: 'type',
   content: 'content',
+  importanceScore: 'importanceScore',
   createdAt: 'createdAt'
 } as const
 

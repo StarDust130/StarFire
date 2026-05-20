@@ -13,7 +13,8 @@ export const MemoryType = {
   short_term: 'short_term',
   medium_term: 'medium_term',
   long_term: 'long_term',
-  episodic: 'episodic'
+  episodic: 'episodic',
+  summary: 'summary'
 } as const
 
 export type MemoryType = (typeof MemoryType)[keyof typeof MemoryType]

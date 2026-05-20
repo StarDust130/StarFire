@@ -75,12 +75,12 @@ Build Bhishma memory engine.
 * ✅ Retrieve conversations
 * ✅ Add short-term memory
 * ✅ Add long-term memory
-* [ ] Add semantic memory
+* ✅ Add semantic memory
 * ✅ Add embeddings
 * ✅ Connect Qdrant
-* [ ] Add memory ranking
-* [ ] Add importance scoring
-* [ ] Add summarization pipeline
+* ✅ Add memory ranking
+* ✅ Add importance scoring
+* ✅ Add summarization pipeline
 
 ---
 
@@ -92,11 +92,11 @@ Enable async AI workflows.
 
 ### 🔥 Tasks
 
-* [ ] Setup BullMQ
-* [ ] Setup Redis connection
-* [ ] Create job queue
-* [ ] Create memory queue
-* [ ] Create retry handling
+* ✅ Setup BullMQ
+* ✅ Setup Redis connection
+* ✅ Create job queue
+* ✅ Create memory queue
+* ✅ Create retry handling
 * [ ] Create queue monitoring
 * [ ] Add worker logging
 
@@ -253,3 +253,23 @@ Make Bhishma feel premium.
 
 
 THE END
+
+
+
+## 🚀 Future Memory Upgrades
+
+- 🧠 Duplicate memory detection
+- ⏳ Memory decay system
+- 🔄 Memory updating/replacement
+- ❤️ Emotional memory tracking
+- 📚 Episodic memory timeline
+- 🌐 Hybrid semantic + keyword retrieval
+- 🕸️ Graph-based memory relationships
+- 🧹 Automatic memory cleanup
+- 🤖 Reflection & self-learning pipeline
+- 👤 Dynamic evolving user profile
+- 🧠 Multi-memory extraction
+- ⚡ Fast reranking pipeline
+- 🪄 Memory confidence scoring
+- 📌 Pinned critical memories
+- 🧬 Personality evolution tracking

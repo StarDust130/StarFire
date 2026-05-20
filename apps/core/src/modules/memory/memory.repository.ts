@@ -6,6 +6,7 @@ export async function createMemory(data: {
   userId: string;
   content: string;
   type: MemoryType;
+  importanceScore: number;
 }) {
   return prisma.memory.create({
     data,
