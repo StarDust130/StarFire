@@ -32,3 +32,34 @@ export async function saveMemoryVector(
     },
   );
 }
+
+export async function searchRelevantMemories(query: string, userId: string) {
+  // 1️⃣ Create query embedding 🧠
+  const vector = await createEmbedding(query);
+
+  // 2️⃣ Search similar vectors 🔍
+  const results = await qdrant.search(
+    "memories",
+
+    {
+      vector,
+
+      limit: 5,
+
+      filter: {
+        must: [
+          {
+            key: "userId",
+
+            match: {
+              value: userId,
+            },
+          },
+        ],
+      },
+    },
+  );
+
+  // 3️⃣ Return memory texts ✨
+  return results.map((result) => result.payload?.content);
+}
