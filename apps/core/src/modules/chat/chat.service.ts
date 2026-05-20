@@ -9,6 +9,11 @@ import { getRandomInjectionReply, isPromptInjection } from "../../security/promp
 import { buildUserProfileContext } from "../memory/memory.context.js";
 import { getLongTermMemories } from "../memory/memory.repository.js";
 
+import { searchRelevantMemories } from "../memory/memory.vector.js";
+
+import { buildSemanticMemoryContext } from "../memory/memory.semantic.js";
+
+
 //! Core chat service handling the entire flow of a chat interaction 🗣️🤖
 export async function chatService(data: { userId: string; content: string }) {
   // 1️⃣ Save user message in DB 👤
@@ -37,8 +42,21 @@ export async function chatService(data: { userId: string; content: string }) {
   // 3️⃣.7️⃣ 👤 Build user profile
   const userProfile = buildUserProfileContext(memories);
 
+  // 3️⃣.8️⃣ 🔍 Search semantic memories
+  const semanticMemories = await searchRelevantMemories(
+    data.content,
+    data.userId,
+  );
+
+  // 3️⃣.9️⃣ 🧠 Build semantic context
+  const semanticContext = buildSemanticMemoryContext(semanticMemories);
+
   // 4️⃣ Generate AI response ✨
-  const aiReply = await generateAIResponse(context, userProfile);
+  const aiReply = await generateAIResponse(
+    context,
+    userProfile,
+    semanticContext,
+  );
 
   // 5️⃣ Save assistant reply 🤖
   await createMessage({
