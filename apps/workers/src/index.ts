@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { logger } from "../../core/src/lib/logger.js";
 import "./workers/memory.worker.js";
 
