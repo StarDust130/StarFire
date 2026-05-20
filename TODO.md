@@ -78,9 +78,9 @@ Build Bhishma memory engine.
 * ✅ Add semantic memory
 * ✅ Add embeddings
 * ✅ Connect Qdrant
-* [ ] Add memory ranking
-* [ ] Add importance scoring
-* [ ] Add summarization pipeline
+* ✅ Add memory ranking
+* ✅ Add importance scoring
+* ✅ Add summarization pipeline
 
 ---
 
