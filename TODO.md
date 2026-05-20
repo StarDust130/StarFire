@@ -253,3 +253,23 @@ Make Bhishma feel premium.
 
 
 THE END
+
+
+
+## 🚀 Future Memory Upgrades
+
+- 🧠 Duplicate memory detection
+- ⏳ Memory decay system
+- 🔄 Memory updating/replacement
+- ❤️ Emotional memory tracking
+- 📚 Episodic memory timeline
+- 🌐 Hybrid semantic + keyword retrieval
+- 🕸️ Graph-based memory relationships
+- 🧹 Automatic memory cleanup
+- 🤖 Reflection & self-learning pipeline
+- 👤 Dynamic evolving user profile
+- 🧠 Multi-memory extraction
+- ⚡ Fast reranking pipeline
+- 🪄 Memory confidence scoring
+- 📌 Pinned critical memories
+- 🧬 Personality evolution tracking
