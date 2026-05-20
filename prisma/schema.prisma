@@ -29,6 +29,7 @@ model Memory {
   type    MemoryType @map("type")
   content String     @db.Text
   importanceScore Int @default(0)
+  
 
   createdAt DateTime @default(now()) @map("created_at")
 
@@ -44,6 +45,7 @@ enum MemoryType {
   medium_term
   long_term
   episodic
+  summary
 }
 
 /// 💬 Messages
