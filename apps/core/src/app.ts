@@ -10,6 +10,7 @@ import { queueMonitorRouter } from "./lib/queue-monitor.js";
 
 import { resumeRouter } from "./modules/resume/resume.route.js";
 import { emailRouter } from "./modules/email/email.route.js";
+import { jobRouter } from "./modules/jobs/jobs.route.js";
 
 export const app: Express = express();
 
@@ -24,7 +25,7 @@ app.use("/api/v1/chat", chatRouter);
 // Worker routes 🍼
 app.use("/api/email", emailRouter);
 app.use("/api/resume", resumeRouter);
-
+app.use("/api/job",jobRouter,);
 
 // ⚡ Queue Monitor Dashboard
 app.use("/admin/queues", queueMonitorRouter );
