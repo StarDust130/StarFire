@@ -110,7 +110,7 @@ Build disposable AI workers.
 
 ### 🔥 Tasks
 
-* [ ] Job Finder Worker
+* ✅ Job Finder Worker
 * ✅ Resume Optimizer Worker
 * ✅ Email Draft Worker
 * ✅ Memory Summarizer Worker
