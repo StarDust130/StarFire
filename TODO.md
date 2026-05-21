@@ -111,16 +111,16 @@ Build disposable AI workers.
 ### 🔥 Tasks
 
 * [ ] Job Finder Worker
-* [ ] Resume Optimizer Worker
+* ✅ Resume Optimizer Worker
 * ✅ Email Draft Worker
 * ✅ Memory Summarizer Worker
 
 ### Features
 
-* [ ] Task execution
-* [ ] Save results
-* [ ] Retry failures
-* [ ] Worker lifecycle logs
+* ✅ Task execution
+* ✅ Save results
+* ✅ Retry failures
+* ✅ Worker lifecycle logs
 
 ---
 
