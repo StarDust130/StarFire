@@ -8,6 +8,7 @@ import  healthRouter  from "./modules/health/health.route.js";
 import  chatRouter  from "./modules/chat/chat.route.js";
 import { queueMonitorRouter } from "./lib/queue-monitor.js";
 
+import { resumeRouter } from "./modules/resume/resume.route.js";
 import { emailRouter } from "./modules/email/email.route.js";
 
 export const app: Express = express();
@@ -20,7 +21,10 @@ app.use(express.json());
 app.use("/api/v1/health", healthRouter);
 app.use("/api/v1/chat", chatRouter);
 
+// Worker routes 🍼
 app.use("/api/email", emailRouter);
+app.use("/api/resume", resumeRouter);
+
 
 // ⚡ Queue Monitor Dashboard
 app.use("/admin/queues", queueMonitorRouter );
