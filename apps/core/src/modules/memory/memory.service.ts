@@ -6,11 +6,10 @@ import { scoreMemory } from "./memory.score.js";
 
 import { saveMemoryVector } from "./memory.vector.js";
 
-import { summarizeMemories } from "./memory.summary.js";
-
 import { MemoryType } from "../../../../../prisma/generated/client/enums.js";
 
 import { logger } from "../../lib/logger.js";
+import { summaryQueue } from "../../queue/summary.queue.js";
 
 export async function processMemory(data: { userId: string; message: string }) {
   // 1️⃣ Extract memory 🧠
@@ -60,30 +59,22 @@ export async function processMemory(data: { userId: string; message: string }) {
   // 7️⃣ Get all long-term memories 🧠
   const allMemories = await getLongTermMemories(data.userId);
 
-  // 8️⃣ Summarize occasionally ✨
+  // 8️⃣ Decide whether summary needed ✨
   const shouldSummarize =
     allMemories.length > 0 && allMemories.length % 25 === 0;
 
+  // 9️⃣ Queue summary worker ⚡
   if (shouldSummarize) {
-    logger.debug("Creating memory summary ✨");
+    logger.debug("Queueing summary worker ✨");
 
-    const summary = await summarizeMemories(allMemories.map((m) => m.content));
+    await summaryQueue.add(
+      "summarize-memories",
 
-    // 💾 Save summary memory
-    if (summary) {
-      await createMemory({
+      {
         userId: data.userId,
 
-        content: summary,
-
-        type: MemoryType.summary,
-
-        importanceScore: 10,
-      });
-
-      logger.debug("Summary saved ✅");
-    }
+        memories: allMemories.map((m) => m.content),
+      },
+    );
   }
-
-  return savedMemory;
 }
