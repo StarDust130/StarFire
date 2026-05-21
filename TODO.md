@@ -113,7 +113,7 @@ Build disposable AI workers.
 * [ ] Job Finder Worker
 * [ ] Resume Optimizer Worker
 * [ ] Email Draft Worker
-* [ ] Memory Summarizer Worker
+* ✅ Memory Summarizer Worker
 
 ### Features
 
