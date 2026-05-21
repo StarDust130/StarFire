@@ -273,3 +273,10 @@ THE END
 - 🪄 Memory confidence scoring
 - 📌 Pinned critical memories
 - 🧬 Personality evolution tracking
+
+
+## Things to ADD:-
+- Web Extension for auto job application
+- Mobile App for on-the-go interaction
+- Calendar integration for scheduling
+- Email integration for outreach
