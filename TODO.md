@@ -97,8 +97,8 @@ Enable async AI workflows.
 * ✅ Create job queue
 * ✅ Create memory queue
 * ✅ Create retry handling
-* [ ] Create queue monitoring
-* [ ] Add worker logging
+* ✅ Create queue monitoring
+* ✅ Add worker logging
 
 ---
 
