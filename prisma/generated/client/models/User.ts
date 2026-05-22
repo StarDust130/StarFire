@@ -26,6 +26,7 @@ export type AggregateUser = {
 
 export type UserMinAggregateOutputType = {
   id: string | null
+  telegramId: string | null
   clerkId: string | null
   name: string | null
   email: string | null
@@ -35,6 +36,7 @@ export type UserMinAggregateOutputType = {
 
 export type UserMaxAggregateOutputType = {
   id: string | null
+  telegramId: string | null
   clerkId: string | null
   name: string | null
   email: string | null
@@ -44,6 +46,7 @@ export type UserMaxAggregateOutputType = {
 
 export type UserCountAggregateOutputType = {
   id: number
+  telegramId: number
   clerkId: number
   name: number
   email: number
@@ -55,6 +58,7 @@ export type UserCountAggregateOutputType = {
 
 export type UserMinAggregateInputType = {
   id?: true
+  telegramId?: true
   clerkId?: true
   name?: true
   email?: true
@@ -64,6 +68,7 @@ export type UserMinAggregateInputType = {
 
 export type UserMaxAggregateInputType = {
   id?: true
+  telegramId?: true
   clerkId?: true
   name?: true
   email?: true
@@ -73,6 +78,7 @@ export type UserMaxAggregateInputType = {
 
 export type UserCountAggregateInputType = {
   id?: true
+  telegramId?: true
   clerkId?: true
   name?: true
   email?: true
@@ -155,6 +161,7 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: string
+  telegramId: string | null
   clerkId: string | null
   name: string
   email: string | null
@@ -185,6 +192,7 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.UuidFilter<"User"> | string
+  telegramId?: Prisma.StringNullableFilter<"User"> | string | null
   clerkId?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringNullableFilter<"User"> | string | null
@@ -196,6 +204,7 @@ export type UserWhereInput = {
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  telegramId?: Prisma.SortOrderInput | Prisma.SortOrder
   clerkId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -207,6 +216,7 @@ export type UserOrderByWithRelationInput = {
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  telegramId?: string
   clerkId?: string
   email?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -217,10 +227,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   memories?: Prisma.MemoryListRelationFilter
   messages?: Prisma.MessageListRelationFilter
-}, "id" | "clerkId" | "email">
+}, "id" | "telegramId" | "clerkId" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  telegramId?: Prisma.SortOrderInput | Prisma.SortOrder
   clerkId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -236,6 +247,7 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"User"> | string
+  telegramId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   clerkId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   name?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -245,6 +257,7 @@ export type UserScalarWhereWithAggregatesInput = {
 
 export type UserCreateInput = {
   id?: string
+  telegramId?: string | null
   clerkId?: string | null
   name: string
   email?: string | null
@@ -256,6 +269,7 @@ export type UserCreateInput = {
 
 export type UserUncheckedCreateInput = {
   id?: string
+  telegramId?: string | null
   clerkId?: string | null
   name: string
   email?: string | null
@@ -267,6 +281,7 @@ export type UserUncheckedCreateInput = {
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -278,6 +293,7 @@ export type UserUpdateInput = {
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -289,6 +305,7 @@ export type UserUncheckedUpdateInput = {
 
 export type UserCreateManyInput = {
   id?: string
+  telegramId?: string | null
   clerkId?: string | null
   name: string
   email?: string | null
@@ -298,6 +315,7 @@ export type UserCreateManyInput = {
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -307,6 +325,7 @@ export type UserUpdateManyMutationInput = {
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -316,6 +335,7 @@ export type UserUncheckedUpdateManyInput = {
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  telegramId?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -325,6 +345,7 @@ export type UserCountOrderByAggregateInput = {
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  telegramId?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -334,6 +355,7 @@ export type UserMaxOrderByAggregateInput = {
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  telegramId?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -388,6 +410,7 @@ export type UserUpdateOneRequiredWithoutMessagesNestedInput = {
 
 export type UserCreateWithoutMemoriesInput = {
   id?: string
+  telegramId?: string | null
   clerkId?: string | null
   name: string
   email?: string | null
@@ -398,6 +421,7 @@ export type UserCreateWithoutMemoriesInput = {
 
 export type UserUncheckedCreateWithoutMemoriesInput = {
   id?: string
+  telegramId?: string | null
   clerkId?: string | null
   name: string
   email?: string | null
@@ -424,6 +448,7 @@ export type UserUpdateToOneWithWhereWithoutMemoriesInput = {
 
 export type UserUpdateWithoutMemoriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -434,6 +459,7 @@ export type UserUpdateWithoutMemoriesInput = {
 
 export type UserUncheckedUpdateWithoutMemoriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -444,6 +470,7 @@ export type UserUncheckedUpdateWithoutMemoriesInput = {
 
 export type UserCreateWithoutMessagesInput = {
   id?: string
+  telegramId?: string | null
   clerkId?: string | null
   name: string
   email?: string | null
@@ -454,6 +481,7 @@ export type UserCreateWithoutMessagesInput = {
 
 export type UserUncheckedCreateWithoutMessagesInput = {
   id?: string
+  telegramId?: string | null
   clerkId?: string | null
   name: string
   email?: string | null
@@ -480,6 +508,7 @@ export type UserUpdateToOneWithWhereWithoutMessagesInput = {
 
 export type UserUpdateWithoutMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -490,6 +519,7 @@ export type UserUpdateWithoutMessagesInput = {
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clerkId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -540,6 +570,7 @@ export type UserCountOutputTypeCountMessagesArgs<ExtArgs extends runtime.Types.E
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  telegramId?: boolean
   clerkId?: boolean
   name?: boolean
   email?: boolean
@@ -552,6 +583,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  telegramId?: boolean
   clerkId?: boolean
   name?: boolean
   email?: boolean
@@ -561,6 +593,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  telegramId?: boolean
   clerkId?: boolean
   name?: boolean
   email?: boolean
@@ -570,6 +603,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 
 export type UserSelectScalar = {
   id?: boolean
+  telegramId?: boolean
   clerkId?: boolean
   name?: boolean
   email?: boolean
@@ -577,7 +611,7 @@ export type UserSelectScalar = {
   createdAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clerkId" | "name" | "email" | "timezone" | "createdAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "telegramId" | "clerkId" | "name" | "email" | "timezone" | "createdAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   memories?: boolean | Prisma.User$memoriesArgs<ExtArgs>
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
@@ -594,6 +628,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    telegramId: string | null
     clerkId: string | null
     name: string
     email: string | null
@@ -1025,6 +1060,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
+  readonly telegramId: Prisma.FieldRef<"User", 'String'>
   readonly clerkId: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>

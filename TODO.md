@@ -132,12 +132,12 @@ Real user interaction.
 
 ### 🔥 Tasks
 
-* [ ] Create Telegram bot
-* [ ] Setup webhook
-* [ ] Connect to core API
-* [ ] Add message persistence
-* [ ] Add typing indicators
-* [ ] Add memory-aware replies
+* ✅ Create Telegram bot
+* ✅ Setup webhook
+* ✅ Connect to core API
+* ✅ Add message persistence
+* ✅ Add typing indicators
+* ✅ Add memory-aware replies
 
 ---
 
