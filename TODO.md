@@ -149,7 +149,7 @@ Visual control center.
 
 ### 🔥 Tasks
 
-* [ ] Clerk auth
+* ✅ Clerk auth
 * [ ] Dashboard layout
 * [ ] Chat interface
 * [ ] Memory viewer
