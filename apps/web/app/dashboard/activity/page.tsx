@@ -76,7 +76,7 @@ export default function ActivityPage() {
           Autonomous Logs
         </h1>
         <p className="text-[var(--color-muted)] mt-2">
-          Historical timeline of all actions taken by the Bhishma agent.
+          Historical timeline of all actions taken by the Startfire agent.
         </p>
       </div>
 
