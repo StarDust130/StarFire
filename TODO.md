@@ -1,4 +1,4 @@
-# 🚀 Bhishma TODO Roadmap
+# 🚀 Startfire TODO Roadmap
 
 ## ✅ PHASE 0 — FOUNDATION (DONE)
 
@@ -40,7 +40,7 @@ Create production-grade backend foundation.
 
 ## Goal:
 
-Build Bhishma brain.
+Build Startfire brain.
 
 ### 🔥 Tasks
 
@@ -67,7 +67,7 @@ Build Bhishma brain.
 
 ## Goal:
 
-Build Bhishma memory engine.
+Build Startfire memory engine.
 
 ### 🔥 Tasks
 
@@ -236,7 +236,7 @@ Production deployment.
 
 ## Goal:
 
-Make Bhishma feel premium.
+Make Startfire feel premium.
 
 ### 🔥 Tasks
 
