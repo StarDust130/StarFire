@@ -16,7 +16,7 @@ export default function ChatPage() {
     {
       id: 1,
       role: "assistant",
-      text: "Hello. I am Bhishma. What career objective are we executing today?",
+      text: "Hello. I am Startfire. What career objective are we executing today?",
       time: "10:00 AM",
     },
   ]);
@@ -120,7 +120,7 @@ export default function ChatPage() {
             </div>
             <div>
               <h2 className="font-semibold text-[var(--color-foreground)]">
-                Bhishma Intelligence
+                Startfire Intelligence
               </h2>
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_5px_#22c55e]"></span>
@@ -200,7 +200,7 @@ export default function ChatPage() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask Bhishma to find jobs, optimize resume, or query memory..."
+                placeholder="Ask Startfire to find jobs, optimize resume, or query memory..."
                 className="flex-1 bg-transparent py-4 px-2 outline-none text-[15px] text-[var(--color-foreground)] placeholder-[var(--color-muted)]"
               />
               <button
