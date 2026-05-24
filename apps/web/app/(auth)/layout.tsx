@@ -1,9 +1,10 @@
 "use client";
 
+import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 export default function AuthLayout({
   children,
@@ -11,6 +12,15 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { userId, isLoaded } = useAuth();
+
+  // 1. Force redirect if the user is already logged in
+  useEffect(() => {
+    if (isLoaded && userId) {
+      router.replace("/dashboard");
+    }
+  }, [isLoaded, userId, router]);
 
   // Dynamically determine the page type based on the URL
   const isSignUp =
@@ -24,6 +34,11 @@ export default function AuthLayout({
     ? "https://plus.unsplash.com/premium_photo-1682308249776-9356bf43b705?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     : "https://plus.unsplash.com/premium_photo-1711987491701-4d790ec5d501?q=80&w=1688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
+  // 2. Prevent UI flash: Do not render the forms if auth state is loading or user is logged in
+  if (!isLoaded || userId) {
+    return <div className="min-h-screen bg-[var(--color-bg)]" />;
+  }
+
   return (
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-[var(--color-bg)] relative">
       {/* Mobile Background */}
@@ -34,9 +49,7 @@ export default function AuthLayout({
           alt="Bhishma abstract background"
           fill
           className="object-cover"
-          unoptimized={
-            true
-          } /* Bypasses Next.js image optimization to fix the hydration/crash error */
+          unoptimized={true}
         />
       </div>
 
@@ -63,13 +76,9 @@ export default function AuthLayout({
             </svg>
             Back
           </Link>
-
-
         </div>
 
-      
-          {children}
-     
+        {children}
       </div>
 
       {/* Right Pane - Visuals */}
@@ -83,9 +92,7 @@ export default function AuthLayout({
           fill
           className="object-cover opacity-70"
           priority
-          unoptimized={
-            true
-          } /* THIS MUST BE HERE TO MATCH THE MOBILE IMAGE AND FIX HYDRATION */
+          unoptimized={true}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-0" />
