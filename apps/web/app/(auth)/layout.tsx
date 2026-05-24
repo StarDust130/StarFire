@@ -20,17 +20,23 @@ export default function AuthLayout({
   const isLogin = !isSignUp;
 
   // Dynamically assign the image based on the auth state
-  const bgImage = isLogin ? "/img-1.avif" : "/img-2.avif";
+  const bgImage = isLogin
+    ? "https://plus.unsplash.com/premium_photo-1682308249776-9356bf43b705?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    : "https://plus.unsplash.com/premium_photo-1711987491701-4d790ec5d501?q=80&w=1688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   return (
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-[var(--color-bg)] relative">
       {/* Mobile Background */}
       <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none">
         <Image
+          key={bgImage}
           src={bgImage}
-          alt={`Bhishma abstract background for ${isLogin ? "login" : "signup"}`}
+          alt="Bhishma abstract background"
           fill
           className="object-cover"
+          unoptimized={
+            true
+          } /* Bypasses Next.js image optimization to fix the hydration/crash error */
         />
       </div>
 
@@ -79,11 +85,15 @@ export default function AuthLayout({
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[var(--color-accent)]/20 blur-[100px] pointer-events-none z-10"></div>
 
         <Image
+          key={bgImage}
           src={bgImage}
           alt={`Bhishma abstract background for ${isLogin ? "login" : "signup"}`}
           fill
           className="object-cover opacity-70"
-          priority // Added priority to ensure the background loads immediately without layout shift
+          priority
+          unoptimized={
+            true
+          } /* THIS MUST BE HERE TO MATCH THE MOBILE IMAGE AND FIX HYDRATION */
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-0" />
