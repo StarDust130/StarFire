@@ -175,7 +175,7 @@ export function MobileHeader({
         <Link href="/dashboard" className="flex items-center gap-3">
           <Logo size={28} className="!gap-2" />
           <span className="font-bold tracking-tight text-white">
-            Bhishma OS
+            Startfire OS
           </span>
         </Link>
       </div>
