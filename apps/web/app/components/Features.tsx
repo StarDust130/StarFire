@@ -13,10 +13,10 @@ export default function Features() {
             Capabilities
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-[family-name:var(--font-serif)] tracking-tight mb-6 text-balance">
-            Delegate everything to Bhishma.
+            Delegate everything to Startfire.
           </h2>
           <p className="text-white/70 text-base md:text-lg lg:text-xl max-w-3xl mx-auto font-medium text-balance">
-            Connect your workflows, clarify your intent, and let Bhishma execute
+            Connect your workflows, clarify your intent, and let Startfire execute
             flawlessly on your behalf.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function Features() {
               Job Hunting, Automated
             </h3>
             <p className="text-white/60 leading-relaxed text-base sm:text-lg mb-8">
-              Tell Bhishma your ideal role. It will continuously scour job
+              Tell Startfire your ideal role. It will continuously scour job
               boards, match descriptions to your resume, and autonomously apply
               on your behalf.
             </p>
@@ -54,7 +54,7 @@ export default function Features() {
             </h3>
             <p className="text-white/60 leading-relaxed text-base sm:text-lg mb-8">
               Data entry, form filling, scraping, or web driving. Define the
-              sequence once, and Bhishma executes it flawlessly millions of
+              sequence once, and Startfire executes it flawlessly millions of
               times without fatigue.
             </p>
             <Button
@@ -76,7 +76,7 @@ export default function Features() {
                 Autonomous Execution Engine
               </h3>
               <p className="text-white/60 leading-relaxed text-base sm:text-lg mb-8 max-w-2xl">
-                Not just a chatbot. Bhishma spins up headless browsers,
+                Not just a chatbot. Startfire spins up headless browsers,
                 authenticates, and navigates complex UI interfaces to get actual
                 work done for you across the entire web.
               </p>
