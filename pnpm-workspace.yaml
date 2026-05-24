@@ -8,6 +8,7 @@ allowBuilds:
   '@prisma/engines': false
   esbuild: true
   msgpackr-extract: true
+  msw: set this to true or false
   prisma: false
   protobufjs: true
   sharp: false
