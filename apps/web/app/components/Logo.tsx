@@ -21,7 +21,7 @@ export default function Logo({
       <div className="relative flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105">
         <Image
           src="/icon.png"
-          alt="Bhishma"
+          alt="Startfire"
           fill
           sizes="(max-width: 640px) 32px, 40px"
           className="object-contain"
@@ -31,7 +31,7 @@ export default function Logo({
       {/* Responsive text: 20px on mobile, 24px on sm+ screens */}
       {showText && (
         <span className="text-white font-bold text-xl sm:text-2xl tracking-tight transition-opacity duration-300 group-hover:opacity-90">
-          Bhishma
+          Startfire
         </span>
       )}
     </div>
