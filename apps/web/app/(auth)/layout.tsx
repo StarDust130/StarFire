@@ -46,7 +46,7 @@ export default function AuthLayout({
         <Image
           key={bgImage}
           src={bgImage}
-          alt="Bhishma abstract background"
+          alt="Startfire abstract background"
           fill
           className="object-cover"
           unoptimized={true}
@@ -88,7 +88,7 @@ export default function AuthLayout({
         <Image
           key={bgImage}
           src={bgImage}
-          alt={`Bhishma abstract background for ${isLogin ? "login" : "signup"}`}
+          alt={`Startfire abstract background for ${isLogin ? "login" : "signup"}`}
           fill
           className="object-cover opacity-70"
           priority
@@ -116,7 +116,7 @@ export default function AuthLayout({
           <p className="text-white/70 text-lg max-w-md font-medium leading-relaxed">
             {isLogin
               ? "Log in to access your automated workflows and pick up exactly where you left off."
-              : "Join thousands of modern professionals who let Bhishma handle their automated workflows."}
+              : "Join thousands of modern professionals who let Startfire handle their automated workflows."}
           </p>
 
           <div className="mt-12 flex flex-wrap gap-4">
