@@ -1,6 +1,6 @@
 <div align="center">
 
-  # ⚔️ ॥ भीष्म • Bhīṣma ॥ ⚡
+  # ⚔️ ॥ StarFire ॥ 🔥
   <div align="center">
   <img src="public/banner.gif" alt="Event Flow Diagram" width="800" />
 </div>
