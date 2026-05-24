@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Show, UserButton } from "@clerk/nextjs";
 import Button from "./Button";
-import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,41 +27,27 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[var(--color-bg)]/80 backdrop-blur-xl border-b border-[var(--color-border)] py-3 px-4 sm:px-8"
+            ? "bg-black/80 backdrop-blur-xl border-b border-white/10 py-3 px-4 sm:px-8"
             : "bg-transparent py-5 px-4 sm:px-8"
         } flex items-center justify-between pointer-events-auto`}
       >
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 z-50 cursor-pointer group"
-        >
-          <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)] flex items-center justify-center text-[var(--color-primary-contrast)] font-bold font-[family-name:var(--font-serif)] transition-transform group-hover:scale-105 shadow-sm">
-            B
-          </div>
-          <span className="text-[var(--color-foreground)] font-bold text-lg tracking-tight">
-            Bhishma
-          </span>
-        </Link>
+        <div className="z-50">
+          <Logo href="/" size={32} className="group transition-transform group-hover:scale-105" />
+        </div>
 
         {/* Desktop Links */}
-        <nav className="hidden md:flex items-center gap-8 text-[15px] font-medium text-[var(--color-muted)]">
-          <a
-            href="#features"
-            className="hover:text-[var(--color-primary)] transition-colors"
-          >
+        <nav className="hidden md:flex items-center gap-8 text-[15px] font-medium text-white/70">
+          <a href="#features" className="hover:text-white transition-colors">
             Features
           </a>
           <a
             href="#how-it-works"
-            className="hover:text-[var(--color-primary)] transition-colors"
+            className="hover:text-white transition-colors"
           >
             How it Works
           </a>
-          <a
-            href="#pricing"
-            className="hover:text-[var(--color-primary)] transition-colors"
-          >
+          <a href="#pricing" className="hover:text-white transition-colors">
             Pricing
           </a>
         </nav>
@@ -70,7 +56,11 @@ export default function Navbar() {
         <div className="flex items-center gap-3 z-50">
           <Show when="signed-out">
             <div className="hidden md:flex items-center gap-2">
-              <Button href="/sign-in" variant="ghost" className="text-sm px-4">
+              <Button
+                href="/sign-in"
+                variant="ghost"
+                className="text-sm px-4 text-white/80 hover:text-white hover:bg-white/10"
+              >
                 Log in
               </Button>
               <Button
@@ -96,7 +86,7 @@ export default function Navbar() {
           </Show>
 
           <button
-            className="md:hidden p-2.5 text-[var(--color-foreground)] bg-white/60 backdrop-blur-md rounded-full border border-[var(--color-border)] shadow-sm transition-all focus:outline-none"
+            className="md:hidden p-2.5 text-white bg-white/5 backdrop-blur-md rounded-full transition-all focus:outline-none hover:bg-white/10"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -116,26 +106,26 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-[var(--color-bg)]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 pt-16 px-6"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 pt-16 px-6"
           >
             <a
               onClick={() => setMobileMenuOpen(false)}
               href="#features"
-              className="text-3xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-accent)] transition-colors"
+              className="text-3xl font-bold text-white hover:text-[#f2a60c] transition-colors"
             >
               Features
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
               href="#how-it-works"
-              className="text-3xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-accent)] transition-colors"
+              className="text-3xl font-bold text-white hover:text-[#f2a60c] transition-colors"
             >
               How it Works
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
               href="#pricing"
-              className="text-3xl font-bold text-[var(--color-foreground)] hover:text-[var(--color-accent)] transition-colors"
+              className="text-3xl font-bold text-white hover:text-[#f2a60c] transition-colors"
             >
               Pricing
             </a>
@@ -154,7 +144,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   href="/sign-in"
                   variant="outline"
-                  className="w-full py-4 text-lg bg-white/50"
+                  className="w-full py-4 text-lg bg-white/5 text-white border border-white/20 hover:bg-white/10"
                 >
                   Log In
                 </Button>
