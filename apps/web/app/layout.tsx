@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sans.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased selection:bg-[var(--color-accent)] selection:text-white">
+      <body className="font-sans antialiased text-white bg-black ">
         <ClerkProvider>
           {children}
         </ClerkProvider>
