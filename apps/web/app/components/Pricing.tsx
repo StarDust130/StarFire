@@ -47,7 +47,7 @@ export default function Pricing() {
               Collaboration at scale
             </p>
             <div className="text-2xl font-bold mb-4">Contact us</div>
-            <Button href="/contact" variant="white">
+            <Button href="/contact" variant="white" className="text-black">
               Contact Sales
             </Button>
           </div>
