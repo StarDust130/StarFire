@@ -30,7 +30,7 @@ export default function LandingPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a09] z-10 pointer-events-none translate-y-[2px]" />
           <Image
             src="https://images.unsplash.com/photo-1706076463257-20b41d9519f0?q=80&w=1632&auto=format&fit=crop"
-            alt="Bhishma - Your AI Agent"
+            alt="Startfire - Your AI Agent"
             fill
             className="object-cover object-center sm:object-contain sm:object-bottom pointer-events-none"
             priority
