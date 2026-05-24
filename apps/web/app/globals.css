@@ -11,28 +11,28 @@
 :root {
   /* Fonts */
   --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, -apple-system, 
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Helvetica Neue", Arial;
   --font-serif: var(--font-playfair), Georgia, serif;
 
-  /* Premium Color Palette */
-  --color-bg: #eceae4; /* Slightly refined background */
-  --color-foreground: #0d0c0a; /* Darker, richer text */
-  --color-muted: #5e5a52;
-  --color-card: #ffffff;
-  --color-border: #d4cfc7;
-  --color-panel: #f8f7f5;
+  /* Dark Theme Palette */
+  --color-bg: #050505; /* near-black background for a premium look */
+  --color-foreground: #ffffff; /* primary text */
+  --color-muted: #9ca3af; /* subdued secondary text */
+  --color-card: #0b0b0b; /* cards/panels */
+  --color-border: #1f2937; /* subtle borders */
+  --color-panel: #0a0a0a;
 
   /* Brand */
-  --color-primary: #0d0c0a; 
-  --color-primary-contrast: #ffffff;
-  --color-accent: #f2a60c; /* Richer accent */
+  --color-primary: #f2a60c; /* warm gold accent */
+  --color-primary-contrast: #000000; /* text on primary backgrounds */
+  --color-accent: #f2a60c;
 
-  /* Decorative stripes - slightly muted for a premium feel */
-  --stripe-1: #c24d35;
+  /* Decorative stripes */
+  --stripe-1: #6b7280;
   --stripe-2: #f2a60c;
-  --stripe-3: #3e6d4c;
-  --stripe-4: #3d6091;
+  --stripe-3: #374151;
+  --stripe-4: #1f2937;
 }
 
 @layer base {
@@ -77,14 +77,20 @@
     background-color: var(--color-primary);
     color: var(--color-primary-contrast);
   }
-  .btn-glass {
-    @apply px-6 py-3 bg-white/40 backdrop-blur-lg border border-white/60 shadow-sm text-foreground;
-  }
-  .btn-glass:hover {
-    @apply bg-white/60 border-white;
+.btn-glass {
+  @apply px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-foreground shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-300 ease-out;
+}
+
+.btn-glass:hover {
+  @apply bg-white/20 border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.2)] -translate-y-0.5;
+}
+
+.btn-glass:active {
+  @apply scale-95 translate-y-0 shadow-[0_4px_16px_rgba(0,0,0,0.1)];
+}
   }
   .btn-white {
-    @apply px-6 py-3 bg-white text-foreground shadow-sm;
+    @apply px-6 py-3 bg-white text-black text-foreground shadow-sm;
   }
   .btn-white:hover {
     @apply shadow-md transform -translate-y-px;
@@ -103,7 +109,7 @@
   .card:hover {
     @apply shadow-md border-primary/20 transform -translate-y-1;
   }
-}
+
 
 @layer utilities {
   .text-balance {
