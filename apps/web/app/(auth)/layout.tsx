@@ -64,20 +64,12 @@ export default function AuthLayout({
             Back
           </Link>
 
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)] flex items-center justify-center text-[var(--color-primary-contrast)] font-bold font-[family-name:var(--font-serif)] transition-transform group-hover:scale-105 shadow-sm">
-              B
-            </div>
-            <span className="text-[var(--color-foreground)] font-bold text-lg tracking-tight">
-              Bhishma
-            </span>
-          </Link>
+
         </div>
 
-        {/* Form Container */}
-        <div className="w-full max-w-[440px] mt-16 lg:mt-0 flex items-center justify-center backdrop-blur-xl lg:backdrop-blur-none p-8 lg:p-0 rounded-3xl lg:rounded-none bg-[var(--color-bg)]/60 lg:bg-transparent shadow-2xl lg:shadow-none border border-white/10 lg:border-none">
+      
           {children}
-        </div>
+     
       </div>
 
       {/* Right Pane - Visuals */}
