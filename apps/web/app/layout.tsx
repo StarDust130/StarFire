@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Bhishma",
+  title: "Startfire",
   description:
     "AI-powered automation that learns your workflow. Make smarter decisions faster with real-time intelligence.",
 };
