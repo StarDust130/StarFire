@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider  } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 
-const inter = Inter({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-inter", // Keep variable name to avoid refactoring CSS
   display: "swap",
 });
 
@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Bhishma — Your Personal AI Agent",
+  title: "Bhishma — Outsource the boring",
   description:
     "AI-powered automation that learns your workflow. Make smarter decisions faster with real-time intelligence.",
 };
@@ -27,9 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased">
-        {" "}
+    <html lang="en" className={`${sans.variable} ${playfair.variable}`}>
+      <body className="font-sans antialiased selection:bg-[var(--color-accent)] selection:text-white">
         <ClerkProvider>
           {children}
         </ClerkProvider>
