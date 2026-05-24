@@ -3,5 +3,5 @@ import { env } from "./config/env.js";
 import { logger } from "./lib/logger.js";
 
 app.listen(env.PORT, () => {
-  logger.info(`🚀 Bhishma Core running on port ${env.PORT}`);
+  logger.info(`🚀 Startfire Core running on port ${env.PORT}`);
 });

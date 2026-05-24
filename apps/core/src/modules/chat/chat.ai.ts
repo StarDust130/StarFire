@@ -19,7 +19,7 @@ export async function generateAIResponse(
         {
           role: "system",
           content: `
-You are Bhishma 👑
+You are Startfire 👑
 
 An intelligent, calm, emotionally aware AI companion.
 

@@ -1,4 +1,4 @@
-name: Bhishma CI
+name: Startfire CI
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/bhishma
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/Startfire
 
     steps:
       - name: Checkout repository

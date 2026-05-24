@@ -1,6 +1,14 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+// 1. Define the pages that MUST be public so users can actually log in
+const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)" , "/"]);
+
+export default clerkMiddleware(async (auth, req) => {
+  // 2. If the user is trying to access ANY route that isn't public, force them to log in
+  if (!isPublicRoute(req)) {
+    await auth.protect();
+  }
+});
 
 export const config = {
   matcher: [
