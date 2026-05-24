@@ -27,9 +27,9 @@ export default function Hero() {
         transition={{ delay: 0.3, duration: 0.6 }}
         className="text-[var(--color-muted)] text-[16px] sm:text-lg md:text-md leading-[1.6] max-w-[680px] mt-8 text-center text-balance"
       >
-        Bhishma is your personal AI agent that silently operates in the
+        Startfire is your personal AI agent that silently operates in the
         background. From finding the perfect job openings to automating your
-        repetitive tasks, Bhishma does the heavy lifting.
+        repetitive tasks, Startfire does the heavy lifting.
       </motion.p>
 
       {/* CTA */}
@@ -86,7 +86,7 @@ export default function Hero() {
               <div className="relative aspect-video w-full bg-[#0A0A0A] rounded-2xl sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
                 <iframe
                   src="https://www.youtube.com/embed/EH9yR6T4ePI?start=63&autoplay=1&mute=0&rel=0&modestbranding=1&controls=0"
-                  title="Bhishma Demo"
+                  title="Startfire Demo"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                   allowFullScreen
                   className="w-full h-full border-none pointer-events-none"
