@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
+import HowItWorks from "./components/HowItWorks";
+import Pricing from "./components/Pricing";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -63,6 +65,16 @@ export default function LandingPage() {
         {/* --- Features Section --- */}
         <div className="my-10 sm:my-20">
           <Features />
+        </div>
+
+        {/* --- How It Works Section --- */}
+        <div className="my-10 sm:my-20">
+          <HowItWorks />
+        </div>
+
+        {/* --- Pricing Section --- */}
+        <div className="my-10 sm:my-20">
+          <Pricing />
         </div>
       </main>
 
