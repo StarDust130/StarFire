@@ -18,7 +18,7 @@ export default function Footer() {
           </h2>
           <p className="text-white/70 max-w-xl mx-auto mb-10 text-sm sm:text-base relative z-10 text-balance">
             Join thousands of professionals who have already outsourced their
-            boring workflows to Bhishma. Get started today in under 2 minutes.
+            boring workflows to Startfire. Get started today in under 2 minutes.
           </p>
           <Button
             href="/dashboard"
@@ -165,7 +165,7 @@ export default function Footer() {
 
           <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
             <p>
-              © {new Date().getFullYear()} Bhishma AI Inc. All rights reserved.
+              © {new Date().getFullYear()} Startfire AI Inc. All rights reserved.
             </p>
             <p>Made with ❤️ for productivity.</p>
           </div>
