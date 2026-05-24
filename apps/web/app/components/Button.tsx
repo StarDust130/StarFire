@@ -1,29 +1,34 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
-type Variant = "primary" | "outline" | "ghost";
+type Variant = "primary" | "outline" | "ghost" | "glass" | "white";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
-  children: React.ReactNode;
+  href?: string;
   className?: string;
+  children: React.ReactNode;
 }
 
-// ✨ Small, reusable Button component
 export default function Button({
   variant = "primary",
+  href,
   className = "",
   children,
   ...props
 }: ButtonProps) {
-  const base = "btn";
-  const variantClass =
-    variant === "primary"
-      ? "btn-primary"
-      : variant === "outline"
-        ? "btn-outline"
-        : "";
+  const base = "btn group whitespace-nowrap";
+  const variantClass = `btn-${variant}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={`${base} ${variantClass} ${className}`.trim()}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button
@@ -34,5 +39,3 @@ export default function Button({
     </button>
   );
 }
-
-// ✅ Use this for primary CTAs and consistent spacing across pages
