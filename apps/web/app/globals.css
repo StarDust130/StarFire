@@ -1,17 +1,30 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
-  --color-background: #fafaf9;
-  --color-foreground: #0c0a09;
+:root {
+  /* Fonts (next/font injects --font-inter & --font-playfair on <html>) */
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  /* Core color tokens */
+  --color-bg: #e8e6e1;
+  --color-foreground: #1a1a1a;
+  --color-muted: #6a665f;
   --color-card: #ffffff;
-  --color-muted: #f5f5f4;
-  --color-border: #e7e5e4;
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
-  --color-accent: #0c0a09;
-  --color-warm: #78716c;
+  --color-border: #ddd9d3;
+  --color-panel: #f4f3f0;
+
+  /* Brand */
+  --color-primary: #1a1a1a; /* primary dark */
+  --color-primary-contrast: #ffffff;
+  --color-accent: #e9a319; /* warm yellow */
+
+  /* Decorative stripes */
+  --stripe-1: #c8553d;
+  --stripe-2: #e9a319;
+  --stripe-3: #4a7c59;
+  --stripe-4: #4a6fa5;
 }
 
 @layer base {
@@ -19,15 +32,40 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--color-background);
+    background-color: var(--color-bg);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   ::selection {
-    background-color: var(--color-primary);
+    background-color: var(--color-accent);
     color: white;
+  }
+}
+
+@layer components {
+  /* Reusable button primitives — used by components/Button.tsx */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-all;
+  }
+  .btn-primary {
+    @apply px-6 py-3;
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  }
+  .btn-outline {
+    @apply px-6 py-2.5 bg-white/60 backdrop-blur-md border;
+    border-color: var(--color-border);
+    color: var(--color-foreground);
+  }
+
+  /* Card token */
+  .card {
+    @apply rounded-3xl shadow-sm p-8;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
   }
 }
 
