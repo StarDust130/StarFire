@@ -53,7 +53,7 @@ export default function LandingPage() {
             ].map((task) => (
               <span
                 key={task}
-                className="flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/5 hover:bg-white/10 text-white/90 text-xs sm:text-sm font-medium border border-white/10 transition-colors shadow-sm"
+                className="flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/5 hover:bg-white/10 text-white/90 text-xs sm:text-sm font-medium transition-colors"
               >
                 <CheckCircle2 className="w-5 h-5 text-[var(--color-accent)]" />
                 {task}
