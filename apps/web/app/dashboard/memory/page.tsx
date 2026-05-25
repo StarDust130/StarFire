@@ -6,7 +6,6 @@ import {
   Search,
   Database,
   Fingerprint,
-  Lock,
   Shield,
   Zap,
   SlidersHorizontal,
