@@ -48,9 +48,8 @@ export function Sidebar({
           onClick={() => setMobileOpen(false)}
         >
           <div>
-            <Logo  className="!gap-2" />
+            <Logo className="!gap-2" />
           </div>
-         
         </Link>
         <button
           className="md:hidden text-gray-400 hover:text-white transition-colors"
@@ -174,7 +173,7 @@ export function MobileHeader({
         <Link href="/dashboard" className="flex items-center gap-3">
           <Logo size={28} className="!gap-2" />
           <span className="font-bold tracking-tight text-white">
-            Startfire OS
+            StarFire OS
           </span>
         </Link>
       </div>

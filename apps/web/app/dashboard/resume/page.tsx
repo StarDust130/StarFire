@@ -56,7 +56,7 @@ export default function ResumePage() {
           </div>
           <h3 className="text-lg font-bold mb-2">Upload Base Resume</h3>
           <p className="text-sm text-[var(--color-muted)] mb-6">
-            Drop your PDF here or click to browse. Startfire will extract your
+            Drop your PDF here or click to browse. StarFire will extract your
             history to Memory.
           </p>
           <button className="bg-[var(--color-primary)] text-[var(--color-primary-contrast)] px-6 py-2.5 rounded-lg text-sm font-semibold shadow-md">

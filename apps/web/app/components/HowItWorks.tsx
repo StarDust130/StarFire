@@ -11,11 +11,11 @@ export default function HowItWorks() {
           How it works
         </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl text-[var(--color-foreground)] font-[family-name:var(--font-serif)] tracking-tight mb-6">
-          Tell Startfire once — it keeps working
+          Tell StarFire once — it keeps working
         </h2>
         <p className="text-[var(--color-muted)] max-w-3xl mx-auto mb-10">
-          Define a task, connect the accounts, and Startfire autonomously executes
-          it on your behalf — continuously and reliably.
+          Define a task, connect the accounts, and StarFire autonomously
+          executes it on your behalf — continuously and reliably.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -35,7 +35,7 @@ export default function HowItWorks() {
             </div>
             <h3 className="font-semibold mb-2">Connect & Configure</h3>
             <p className="text-[var(--color-muted)] text-sm">
-              Grant access to the tools Startfire needs and tweak behavior to
+              Grant access to the tools StarFire needs and tweak behavior to
               taste.
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function HowItWorks() {
             </div>
             <h3 className="font-semibold mb-2">Autonomous Execution</h3>
             <p className="text-[var(--color-muted)] text-sm">
-              Startfire runs, monitors, and retries until the job completes.
+              StarFire runs, monitors, and retries until the job completes.
             </p>
           </div>
         </div>

@@ -1,18 +1,18 @@
-# 🚀 Startfire TODO Roadmap
+# 🚀 StarFire TODO Roadmap
 
 ## ✅ PHASE 0 — FOUNDATION (DONE)
 
-* ✅ Monorepo setup
-* ✅ pnpm workspace
-* ✅ Turborepo
-* ✅ apps/web
-* ✅ apps/core
-* ✅ apps/workers
-* ✅ Prisma setup
-* ✅ TypeScript setup
-* ✅ GitHub repo
-* ✅ CI workflow
-* ✅ README setup
+- ✅ Monorepo setup
+- ✅ pnpm workspace
+- ✅ Turborepo
+- ✅ apps/web
+- ✅ apps/core
+- ✅ apps/workers
+- ✅ Prisma setup
+- ✅ TypeScript setup
+- ✅ GitHub repo
+- ✅ CI workflow
+- ✅ README setup
 
 ---
 
@@ -24,15 +24,15 @@ Create production-grade backend foundation.
 
 ### 🔥 Tasks
 
-* ✅ Setup Docker Compose
-* ✅ Add PostgreSQL
-* ✅ Add Redis
-* ✅ Add Qdrant
-* ✅ Test local connections
-* ✅ Configure `.env`
-* ✅ Create Prisma schema
-* ✅ Create first migration
-* ✅ Generate Prisma client
+- ✅ Setup Docker Compose
+- ✅ Add PostgreSQL
+- ✅ Add Redis
+- ✅ Add Qdrant
+- ✅ Test local connections
+- ✅ Configure `.env`
+- ✅ Create Prisma schema
+- ✅ Create first migration
+- ✅ Generate Prisma client
 
 ---
 
@@ -40,26 +40,26 @@ Create production-grade backend foundation.
 
 ## Goal:
 
-Build Startfire brain.
+Build StarFire brain.
 
 ### 🔥 Tasks
 
-* ✅ Setup Express server properly
-* ✅ Add middleware
-* ✅ Add request logging
-* ✅ Add error handling
-* ✅ Add health route
-* ✅ Add API versioning
-* ✅ Setup route structure
-* ✅ Setup env validation with zod
+- ✅ Setup Express server properly
+- ✅ Add middleware
+- ✅ Add request logging
+- ✅ Add error handling
+- ✅ Add health route
+- ✅ Add API versioning
+- ✅ Setup route structure
+- ✅ Setup env validation with zod
 
 ### Routes
 
-* ✅ `/health`
-* ✅ `/chat`
-* ✅ `/memory`
-* ✅ `/jobs`
-* ✅ `/tasks`
+- ✅ `/health`
+- ✅ `/chat`
+- ✅ `/memory`
+- ✅ `/jobs`
+- ✅ `/tasks`
 
 ---
 
@@ -67,20 +67,20 @@ Build Startfire brain.
 
 ## Goal:
 
-Build Startfire memory engine.
+Build StarFire memory engine.
 
 ### 🔥 Tasks
 
-* ✅ Save conversations
-* ✅ Retrieve conversations
-* ✅ Add short-term memory
-* ✅ Add long-term memory
-* ✅ Add semantic memory
-* ✅ Add embeddings
-* ✅ Connect Qdrant
-* ✅ Add memory ranking
-* ✅ Add importance scoring
-* ✅ Add summarization pipeline
+- ✅ Save conversations
+- ✅ Retrieve conversations
+- ✅ Add short-term memory
+- ✅ Add long-term memory
+- ✅ Add semantic memory
+- ✅ Add embeddings
+- ✅ Connect Qdrant
+- ✅ Add memory ranking
+- ✅ Add importance scoring
+- ✅ Add summarization pipeline
 
 ---
 
@@ -92,13 +92,13 @@ Enable async AI workflows.
 
 ### 🔥 Tasks
 
-* ✅ Setup BullMQ
-* ✅ Setup Redis connection
-* ✅ Create job queue
-* ✅ Create memory queue
-* ✅ Create retry handling
-* ✅ Create queue monitoring
-* ✅ Add worker logging
+- ✅ Setup BullMQ
+- ✅ Setup Redis connection
+- ✅ Create job queue
+- ✅ Create memory queue
+- ✅ Create retry handling
+- ✅ Create queue monitoring
+- ✅ Add worker logging
 
 ---
 
@@ -110,17 +110,17 @@ Build disposable AI workers.
 
 ### 🔥 Tasks
 
-* ✅ Job Finder Worker
-* ✅ Resume Optimizer Worker
-* ✅ Email Draft Worker
-* ✅ Memory Summarizer Worker
+- ✅ Job Finder Worker
+- ✅ Resume Optimizer Worker
+- ✅ Email Draft Worker
+- ✅ Memory Summarizer Worker
 
 ### Features
 
-* ✅ Task execution
-* ✅ Save results
-* ✅ Retry failures
-* ✅ Worker lifecycle logs
+- ✅ Task execution
+- ✅ Save results
+- ✅ Retry failures
+- ✅ Worker lifecycle logs
 
 ---
 
@@ -132,12 +132,12 @@ Real user interaction.
 
 ### 🔥 Tasks
 
-* ✅ Create Telegram bot
-* ✅ Setup webhook
-* ✅ Connect to core API
-* ✅ Add message persistence
-* ✅ Add typing indicators
-* ✅ Add memory-aware replies
+- ✅ Create Telegram bot
+- ✅ Setup webhook
+- ✅ Connect to core API
+- ✅ Add message persistence
+- ✅ Add typing indicators
+- ✅ Add memory-aware replies
 
 ---
 
@@ -149,14 +149,14 @@ Visual control center.
 
 ### 🔥 Tasks
 
-* ✅ Clerk auth
-* [ ] Dashboard layout
-* [ ] Chat interface
-* [ ] Memory viewer
-* [ ] Job recommendations UI
-* [ ] Task/activity feed
-* [ ] Resume management
-* [ ] Settings page
+- ✅ Clerk auth
+- ✅ Dashboard layout
+- ✅ Chat interface
+- ✅ Memory viewer
+- ✅ Job recommendations UI
+- ✅ Task/activity feed
+- ✅ Resume management
+- ✅ Settings page
 
 ---
 
@@ -168,13 +168,13 @@ Real opportunity engine.
 
 ### 🔥 Tasks
 
-* [ ] Job scraping
-* [ ] API integrations
-* [ ] Job ranking
-* [ ] Resume matching
-* [ ] AI filtering
-* [ ] Founder email finder
-* [ ] Personalized outreach
+- [ ] Job scraping
+- [ ] API integrations
+- [ ] Job ranking
+- [ ] Resume matching
+- [ ] AI filtering
+- [ ] Founder email finder
+- [ ] Personalized outreach
 
 ---
 
@@ -186,12 +186,12 @@ Autonomous workflows.
 
 ### 🔥 Tasks
 
-* [ ] Playwright setup
-* [ ] Browser sessions
-* [ ] Login persistence
-* [ ] Auto form filling
-* [ ] Auto apply system
-* [ ] Human approval flow
+- [ ] Playwright setup
+- [ ] Browser sessions
+- [ ] Login persistence
+- [ ] Auto form filling
+- [ ] Auto apply system
+- [ ] Human approval flow
 
 ---
 
@@ -203,12 +203,12 @@ Production monitoring.
 
 ### 🔥 Tasks
 
-* [ ] Setup Sentry
-* [ ] Add structured logs
-* [ ] Error tracing
-* [ ] Worker monitoring
-* [ ] Queue monitoring
-* [ ] Performance metrics
+- [ ] Setup Sentry
+- [ ] Add structured logs
+- [ ] Error tracing
+- [ ] Worker monitoring
+- [ ] Queue monitoring
+- [ ] Performance metrics
 
 ---
 
@@ -220,15 +220,15 @@ Production deployment.
 
 ### 🔥 Tasks
 
-* [ ] Dockerize apps
-* [ ] Setup DigitalOcean
-* [ ] Setup PostgreSQL production DB
-* [ ] Setup Redis production
-* [ ] Setup Qdrant production
-* [ ] Deploy core
-* [ ] Deploy workers
-* [ ] Deploy Telegram service
-* [ ] Deploy web to Vercel
+- [ ] Dockerize apps
+- [ ] Setup DigitalOcean
+- [ ] Setup PostgreSQL production DB
+- [ ] Setup Redis production
+- [ ] Setup Qdrant production
+- [ ] Deploy core
+- [ ] Deploy workers
+- [ ] Deploy Telegram service
+- [ ] Deploy web to Vercel
 
 ---
 
@@ -236,25 +236,22 @@ Production deployment.
 
 ## Goal:
 
-Make Startfire feel premium.
+Make StarFire feel premium.
 
 ### 🔥 Tasks
 
-* [ ] Better prompts
-* [ ] Better memory retrieval
-* [ ] AI personality tuning
-* [ ] Better onboarding
-* [ ] Faster responses
-* [ ] Cost optimization
-* [ ] Better UX
-* [ ] AI orchestration optimization
+- [ ] Better prompts
+- [ ] Better memory retrieval
+- [ ] AI personality tuning
+- [ ] Better onboarding
+- [ ] Faster responses
+- [ ] Cost optimization
+- [ ] Better UX
+- [ ] AI orchestration optimization
 
 ---
 
-
 THE END
-
-
 
 ## 🚀 Future Memory Upgrades
 
@@ -274,8 +271,8 @@ THE END
 - 📌 Pinned critical memories
 - 🧬 Personality evolution tracking
 
-
 ## Things to ADD:-
+
 - Web Extension for auto job application
 - Mobile App for on-the-go interaction
 - Calendar integration for scheduling

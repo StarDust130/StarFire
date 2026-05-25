@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Startfire",
+  title: "StarFire",
   description:
     "AI-powered automation that learns your workflow. Make smarter decisions faster with real-time intelligence.",
 };
@@ -29,9 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased text-white bg-black ">
-        <ClerkProvider>
-          {children}
-        </ClerkProvider>
+        <ClerkProvider>{children}</ClerkProvider>
       </body>
     </html>
   );

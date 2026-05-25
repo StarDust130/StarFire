@@ -1,14 +1,14 @@
 services:
   postgres:
     image: postgres:17
-    container_name: Startfire-postgres
+    container_name: StarFire-postgres
 
     restart: unless-stopped
 
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: thor130
-      POSTGRES_DB: Startfire
+      POSTGRES_DB: StarFire
 
     ports:
       - "5433:5432"
@@ -18,7 +18,7 @@ services:
 
   redis:
     image: redis:8
-    container_name: Startfire-redis
+    container_name: StarFire-redis
 
     restart: unless-stopped
 
@@ -27,7 +27,7 @@ services:
 
   qdrant:
     image: qdrant/qdrant:latest
-    container_name: Startfire-qdrant
+    container_name: StarFire-qdrant
 
     restart: unless-stopped
 

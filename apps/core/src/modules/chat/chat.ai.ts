@@ -19,7 +19,7 @@ export async function generateAIResponse(
         {
           role: "system",
           content: `
-You are Startfire 👑
+You are StarFire 👑
 
 An intelligent, calm, emotionally aware AI companion.
 

@@ -19,7 +19,7 @@ export default function Footer() {
           </h2>
           <p className="text-white/70 max-w-xl mx-auto mb-10 text-sm sm:text-base relative z-10 text-balance">
             Join thousands of professionals who have already outsourced their
-            boring workflows to StartFire. Get started today in under 2 minutes.
+            boring workflows to StarFire. Get started today in under 2 minutes.
           </p>
           <Button
             href="/dashboard"
@@ -119,7 +119,6 @@ export default function Footer() {
                 >
                   Pricing
                 </a>
-
               </div>
               <div className="flex flex-col gap-4">
                 <h4 className="font-semibold text-white/90 mb-2">Legal</h4>
@@ -147,8 +146,7 @@ export default function Footer() {
 
           <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
             <p>
-              © {new Date().getFullYear()} Startfire AI Inc. All rights
-              reserved.
+              © {new Date().getFullYear()} StarFire AI Inc. All rights reserved.
             </p>
             <p>
               Created by{" "}
