@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Logo from "../../components/Logo";
 import { usePathname } from "next/navigation";
@@ -49,7 +48,7 @@ export function Sidebar({
           onClick={() => setMobileOpen(false)}
         >
           <div>
-            <Logo size={28} className="!gap-2" />
+            <Logo  className="!gap-2" />
           </div>
          
         </Link>
