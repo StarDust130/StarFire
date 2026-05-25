@@ -14,8 +14,8 @@ export default function Pricing() {
           Simple pricing that scales with you
         </h2>
         <p className="text-[var(--color-muted)] max-w-3xl mx-auto mb-10">
-          Start for free and upgrade when you're ready — predictable pricing for
-          teams and power users.
+          Start for free and upgrade when you&apos;re ready — predictable
+          pricing for teams and power users.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
