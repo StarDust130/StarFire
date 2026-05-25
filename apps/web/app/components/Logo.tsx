@@ -2,28 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 type LogoProps = {
   showText?: boolean;
   href?: string;
   className?: string;
+  size?: number;
 };
 
 export default function Logo({
   showText = true,
   href,
   className = "",
+  size,
 }: LogoProps) {
+  const iconStyle = size ? { width: size, height: size } : undefined;
+  const iconSizes = size ? `${size}px` : "(max-width: 640px) 32px, 40px";
+
   const content = (
     <div className={`flex items-center gap-2.5 sm:gap-3 group ${className}`}>
       {/* Responsive container: 32px on mobile, 40px on sm+ screens */}
-      <div className="relative shrink-0 w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105">
+      <div
+        className="relative shrink-0 w-8 h-8 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105"
+        style={iconStyle}
+      >
         <Image
           src="/icon.png"
           alt="StartFire Logo"
           fill
-          sizes="(max-width: 640px) 32px, 40px"
+          sizes={iconSizes}
           className="object-contain"
           priority
         />
@@ -39,11 +46,14 @@ export default function Logo({
 
   if (href) {
     return (
-      <Link href={href} className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-md">
+      <Link
+        href={href}
+        className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-md"
+      >
         {content}
       </Link>
     );
   }
-  
+
   return content;
 }
