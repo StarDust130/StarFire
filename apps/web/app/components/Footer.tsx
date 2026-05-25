@@ -129,13 +129,13 @@ export default function Footer() {
               <div className="flex flex-col gap-4">
                 <h4 className="font-semibold text-white/90 mb-2">Legal</h4>
                 <a
-                  href="#"
+                  href="/privacy"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Privacy Policy
                 </a>
                 <a
-                  href="#"
+                  href="/terms"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Terms of Service
