@@ -1,3 +1,4 @@
+import { CheckCircle2 } from "lucide-react";
 import Button from "./Button";
 
 export default function Pricing() {
@@ -6,50 +7,89 @@ export default function Pricing() {
       id="pricing"
       className="w-full py-16 sm:py-24 px-4 sm:px-8 relative z-10"
     >
-      <div className="max-w-6xl mx-auto text-center">
-        <span className="text-[var(--color-accent)] font-semibold tracking-wider uppercase text-sm mb-4 block">
+      <div className="max-w-5xl mx-auto text-center">
+        <span className="text-yellow-500 font-semibold tracking-wider uppercase text-sm mb-4 block">
           Pricing
         </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl text-[var(--color-foreground)] font-[family-name:var(--font-serif)] tracking-tight mb-6">
-          Simple pricing that scales with you
+        <h2 className="text-3xl sm:text-4xl md:text-5xl text-white font-[family-name:var(--font-serif)] tracking-tight mb-6 text-balance">
+          Unrestricted access. Zero cost.
         </h2>
-        <p className="text-[var(--color-muted)] max-w-3xl mx-auto mb-10">
-          Start for free and upgrade when you&apos;re ready — predictable
-          pricing for teams and power users.
+        <p className="text-white/60 max-w-2xl mx-auto mb-12 text-balance">
+          Starfire is currently in early access. For a limited time, get full
+          access to all premium workflows, integrations, and autonomous agents
+          entirely for free.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div className="card text-center">
-            <h3 className="text-xl font-semibold mb-2">Starter</h3>
-            <p className="text-[var(--color-muted)] text-sm mb-4">
-              Free for personal use
-            </p>
-            <div className="text-2xl font-bold mb-4">$0</div>
-            <Button href="/sign-up" variant="ghost">
-              Get started
-            </Button>
-          </div>
+        {/* The Single Massive Premium Card */}
+        <div className="relative p-8 sm:p-12 md:p-16 rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-2xl overflow-hidden shadow-2xl text-left max-w-4xl mx-auto">
+          {/* Ambient Glow */}
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 rounded-full bg-yellow-500/10 blur-[100px] pointer-events-none" />
 
-          <div className="card text-center">
-            <h3 className="text-xl font-semibold mb-2">Pro</h3>
-            <p className="text-[var(--color-muted)] text-sm mb-4">
-              For power users
-            </p>
-            <div className="text-2xl font-bold mb-4">$19/mo</div>
-            <Button href="/sign-up" variant="primary">
-              Upgrade
-            </Button>
-          </div>
+          <div className="flex flex-col md:flex-row justify-between gap-12 relative z-10">
+            {/* Left Side: Pricing & Pitch */}
+            <div className="flex-1">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">
+                Early Access Pass
+              </h3>
+              <div className="flex items-baseline gap-2 mb-4 mt-6">
+                <span className="text-5xl sm:text-6xl font-black text-white">
+                  $0
+                </span>
+                <span className="text-white/50 font-medium text-lg">
+                  /forever
+                </span>
+              </div>
+              <p className="text-white/70 text-sm sm:text-base leading-relaxed max-w-sm mb-8">
+                We are waiving all subscription fees while we scale our systems.
+                Secure your lifetime free account before we introduce paid
+                tiers.
+              </p>
 
-          <div className="card text-center">
-            <h3 className="text-xl font-semibold mb-2">Team</h3>
-            <p className="text-[var(--color-muted)] text-sm mb-4">
-              Collaboration at scale
-            </p>
-            <div className="text-2xl font-bold mb-4">Contact us</div>
-            <Button href="/contact" variant="white" className="text-black">
-              Contact Sales
-            </Button>
+              {/* Desktop CTA */}
+              <div className="hidden md:block">
+                <Button
+                  href="/sign-up"
+                  variant="primary"
+                  className="w-full sm:w-auto px-8 py-4 text-black bg-yellow-500 hover:bg-yellow-400 font-bold rounded-full transition-colors text-base shadow-[0_0_30px_rgba(234,179,8,0.3)]"
+                >
+                  Claim Free Access Now
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Side: Features */}
+            <div className="flex-1 w-full flex flex-col justify-center gap-4 bg-black/20 p-6 sm:p-8 rounded-3xl border border-white/5">
+              <h4 className="text-white font-semibold mb-2">
+                Everything included:
+              </h4>
+              {[
+                "Unlimited agent workflows",
+                "Access to all neural models",
+                "Priority processing queue",
+                "Advanced data scraping",
+                "API access & webhooks",
+                "24/7 dedicated support",
+              ].map((feature) => (
+                <div
+                  key={feature}
+                  className="flex items-center gap-3 text-white/80 text-sm sm:text-base"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-yellow-500 shrink-0" />
+                  {feature}
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile CTA (Shows at bottom on small screens) */}
+            <div className="md:hidden mt-4">
+              <Button
+                href="/sign-up"
+                variant="primary"
+                className="w-full px-8 py-4 text-black bg-yellow-500 hover:bg-yellow-400 font-bold rounded-full transition-colors text-base shadow-[0_0_30px_rgba(234,179,8,0.3)] flex justify-center"
+              >
+                Claim Free Access Now
+              </Button>
+            </div>
           </div>
         </div>
       </div>
