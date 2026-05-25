@@ -150,13 +150,13 @@ Visual control center.
 ### 🔥 Tasks
 
 * ✅ Clerk auth
-* [ ] Dashboard layout
-* [ ] Chat interface
-* [ ] Memory viewer
-* [ ] Job recommendations UI
-* [ ] Task/activity feed
-* [ ] Resume management
-* [ ] Settings page
+* ✅ Dashboard layout
+* ✅ Chat interface
+* ✅ Memory viewer
+* ✅ Job recommendations UI
+* ✅ Task/activity feed
+* ✅ Resume management
+* ✅ Settings page
 
 ---
 
