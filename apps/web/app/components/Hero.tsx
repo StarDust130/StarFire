@@ -50,7 +50,7 @@ export default function Hero() {
         <Button
           onClick={() => setIsVideoOpen(true)}
           variant="glass"
-          className="w-full sm:w-auto px-8 py-4 sm:px-10 text-[15px] sm:text-base cursor-pointer"
+          className="w-full sm:w-auto px-8 py-4 sm:px-10 text-[15px] sm:text-base cursor-pointer text-white"
         >
           See how it works
         </Button>
