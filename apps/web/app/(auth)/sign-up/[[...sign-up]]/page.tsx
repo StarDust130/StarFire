@@ -11,7 +11,7 @@ import AuthSkeleton from "../../AuthSkeleton";
 
 export default function SignUpPage() {
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col items-center justify-center">
       <ClerkLoading>
         <AuthSkeleton />
       </ClerkLoading>

@@ -6,7 +6,6 @@ import {
   Search,
   Database,
   Fingerprint,
-  Lock,
   Shield,
   Zap,
   SlidersHorizontal,
@@ -185,7 +184,9 @@ export default function MemoryPage() {
             </h3>
 
             <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-4">
-              "{mem.content}"
+              {'"'}
+              {mem.content}
+              {'"'}
             </p>
 
             <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">

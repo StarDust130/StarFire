@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import Hero from "./components/Hero";
@@ -12,34 +11,39 @@ import Footer from "./components/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-dvh flex flex-col bg-[var(--color-bg)] selection:bg-[var(--color-accent)] selection:text-white">
+    <div className="min-h-dvh  flex flex-col bg-[var(--color-bg)] selection:bg-[var(--color-accent)] selection:text-white">
       <Navbar />
 
       <main className="flex-1 w-full flex flex-col relative overflow-hidden">
         {/* --- Hero Section --- */}
         <Hero />
 
-        {/* Robot Image — Full Width Edge-to-Edge */}
+        {/* Robot Video — Full Width Edge-to-Edge */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.9, ease: "easeOut" }}
           className="w-full relative min-h-[300px] sm:min-h-[450px] md:min-h-[550px] mt-4"
         >
-          {/* A gradient overlay to smoothly transition the image into the dark social proof section below it */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a09] z-10 pointer-events-none translate-y-[2px]" />
-          <Image
-            src="https://images.unsplash.com/photo-1706076463257-20b41d9519f0?q=80&w=1632&auto=format&fit=crop"
-            alt="Startfire - Your AI Agent"
-            fill
-            className="object-cover object-center sm:object-contain sm:object-bottom pointer-events-none"
-            priority
-            sizes="100vw"
-          />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0  z-10 pointer-events-none translate-y-0.5" />
+
+          {/* Correct Video Implementation */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover object-center sm:object-contain sm:object-bottom pointer-events-none rounded-lg"
+          >
+            <source src="/starfire-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </motion.div>
 
         {/* --- Social Proof --- */}
-        <div className="w-full bg-[#0a0a09] py-20 px-4 sm:px-8 text-white text-center relative z-20">
+        <div className="w-full  py-20 px-4 sm:px-8 text-white text-center relative z-20">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-[family-name:var(--font-serif)] tracking-tight mb-10 text-balance text-white/90">
             Trusted to execute over 1,000,000 tasks daily
           </h2>

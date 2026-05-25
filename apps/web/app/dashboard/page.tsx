@@ -6,7 +6,6 @@ import {
   Briefcase,
   Zap,
   Radar,
-  ShieldCheck,
   Mail,
   ArrowUpRight,
   CheckCircle2,
@@ -174,7 +173,7 @@ export default function DashboardHome() {
             <p className="text-blue-400">
               ❯ Discovered 12 new listings matching profile.
             </p>
-            <p>❯ Analyzing JD: "Senior React Developer at Vercel"</p>
+            <p>{'❯ Analyzing JD: "Senior React Developer at Vercel"'}</p>
             <p>
               ❯ Extracting required skills:{" "}
               <span className="text-white">

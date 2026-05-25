@@ -36,11 +36,11 @@ export default function AuthLayout({
 
   // 2. Prevent UI flash: Do not render the forms if auth state is loading or user is logged in
   if (!isLoaded || userId) {
-    return <div className="min-h-screen bg-[var(--color-bg)]" />;
+    return <div className="min-h-dvh bg-[var(--color-bg)]" />;
   }
 
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-[var(--color-bg)] relative">
+    <div className="min-h-dvh grid grid-cols-1 lg:grid-cols-2 bg-[var(--color-bg)] relative">
       {/* Mobile Background */}
       <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none">
         <Image
@@ -54,7 +54,8 @@ export default function AuthLayout({
       </div>
 
       {/* Left Pane - Auth Form */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12 relative z-10 w-full">
+      {/* ADDED: h-full forces the flex container to expand to the grid boundaries */}
+      <div className="flex flex-col justify-center items-center h-full w-full p-6 sm:p-12 relative z-10">
         {/* Top Header */}
         <div className="absolute top-6 left-6 right-6 sm:top-12 sm:left-12 sm:right-12 flex justify-between items-center z-50">
           <Link
@@ -82,7 +83,8 @@ export default function AuthLayout({
       </div>
 
       {/* Right Pane - Visuals */}
-      <div className="hidden lg:flex relative flex-col justify-end p-12 lg:p-20 bg-black overflow-hidden">
+      {/* ADDED: h-full to mirror layout constraints */}
+      <div className="hidden lg:flex relative flex-col justify-end h-full p-12 lg:p-20 bg-black overflow-hidden">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[var(--color-accent)]/20 blur-[100px] pointer-events-none z-10"></div>
 
         <Image
