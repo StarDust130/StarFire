@@ -102,29 +102,24 @@ export default function Footer() {
               <div className="flex flex-col gap-4">
                 <h4 className="font-semibold text-white/90 mb-2">Product</h4>
                 <a
-                  href="/features"
+                  href="#features"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Features
                 </a>
                 <a
-                  href="/how-it-works"
+                  href="#how-it-works"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   How it works
                 </a>
                 <a
-                  href="/pricing"
+                  href="#pricing"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Pricing
                 </a>
-                <a
-                  href="/docs"
-                  className="text-white/50 hover:text-white text-sm transition-colors"
-                >
-                  Documentation
-                </a>
+
               </div>
               <div className="flex flex-col gap-4">
                 <h4 className="font-semibold text-white/90 mb-2">Legal</h4>
