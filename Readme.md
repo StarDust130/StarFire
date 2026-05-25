@@ -1,6 +1,7 @@
 <div align="center">
 
-  #  ✨ StarFire ✨ 
+# ✨ StarFire ✨
+
   <div align="center">
   <img src="public/banner.png" alt="Event Flow Diagram" width="800" />
 </div>
@@ -12,7 +13,6 @@
 #### A cloud-native, deeply personalized AI agent orchestrator designed to navigate the global opportunity landscape.
 
 </div>
-
 
 ---
 
@@ -34,7 +34,7 @@ Experience the platform from anywhere. An adaptive interface seamlessly bridging
 
 AI should feel persistent, not purely transactional.
 
-Startfire acts as a companion operating system rather than a standard chatbot. It builds a continuously evolving understanding of who you are, retaining context across days, weeks, and months. As it learns your capabilities and goals, it autonomously navigates opportunities, scouts for roles, and curates pathways tailored uniquely to you.
+StarFire acts as a companion operating system rather than a standard chatbot. It builds a continuously evolving understanding of who you are, retaining context across days, weeks, and months. As it learns your capabilities and goals, it autonomously navigates opportunities, scouts for roles, and curates pathways tailored uniquely to you.
 
 <br />
 
@@ -141,7 +141,7 @@ A robust relational state management underlying the entire orchestration network
 ## ✦ Monorepo Structure
 
 ```text
-Startfire/
+StarFire/
 ├── apps/
 │   ├── web/        # Next.js frontend application
 │   ├── core/       # Express API & Boss AI orchestrator
@@ -175,8 +175,8 @@ Startfire/
 
 ```bash
 # Clone the repository
-git clone https://github.com/StarDust130/Startfire.git
-cd Startfire
+git clone https://github.com/StarDust130/StarFire.git
+cd StarFire
 
 # Install dependencies
 pnpm install
@@ -208,7 +208,7 @@ cp .env.example .env
 
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@localhost:5432/Startfire"
+DATABASE_URL="postgresql://user:password@localhost:5432/StarFire"
 
 # Memory & Queues
 REDIS_URL="redis://localhost:6379"
@@ -255,7 +255,7 @@ Run `docker compose up -d` in the root directory to spin up the required backing
 
 ## ✦ Philosophy
 
-Startfire is not trying to become another generic chatbot.
+StarFire is not trying to become another generic chatbot.
 
 It is designed to become a deeply personalized, reliable, and adaptive digital twin. It focuses on continuity, trust, and proactive execution, moving beyond reactive Q&A to true asymmetric leverage for your future.
 
@@ -276,9 +276,6 @@ It is designed to become a deeply personalized, reliable, and adaptive digital t
 This project is licensed under the StarDust License - "use it as you want but don't be a jerk." ~ 😎
 
 <br />
-
-
-
 
 <div align="center">
   <p style="font-size:28px; margin:8px 0;">✨ ✨ ✨</p>

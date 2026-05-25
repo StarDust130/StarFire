@@ -28,7 +28,7 @@ export default function Logo({
       >
         <Image
           src="/icon.png"
-          alt="StartFire Logo"
+          alt="StarFire Logo"
           fill
           sizes={iconSizes}
           className="object-contain"
@@ -38,7 +38,7 @@ export default function Logo({
       {/* Responsive text: 20px on mobile, 24px on sm+ screens */}
       {showText && (
         <span className="text-white font-bold text-xl sm:text-2xl tracking-tight transition-opacity duration-300 group-hover:opacity-90">
-          StartFire
+          StarFire
         </span>
       )}
     </div>

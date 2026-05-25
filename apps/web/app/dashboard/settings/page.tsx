@@ -69,7 +69,7 @@ export default function SettingsPage() {
               Integration
             </h2>
             <p className="text-sm text-[var(--color-muted)]">
-              Connect Startfire to your Telegram for on-the-go commands and
+              Connect StarFire to your Telegram for on-the-go commands and
               alerts.
             </p>
           </div>
