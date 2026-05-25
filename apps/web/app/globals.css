@@ -78,7 +78,7 @@
     color: var(--color-primary-contrast);
   }
 .btn-glass {
-  @apply px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-foreground shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-300 ease-out;
+  @apply px-6 py-3 bg-white/10 text-black backdrop-blur-md border border-white/20  shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-300 ease-out;
 }
 
 .btn-glass:hover {
@@ -90,7 +90,7 @@
 }
   }
   .btn-white {
-    @apply px-6 py-3 bg-white text-black text-foreground shadow-sm;
+    @apply px-6 py-3 bg-white text-black  shadow-sm;
   }
   .btn-white:hover {
     @apply shadow-md transform -translate-y-px;
