@@ -5,7 +5,7 @@ export default function Features() {
   return (
     <div
       id="features"
-      className="w-full bg-black py-10 sm:py-20 px-4 sm:px-8 relative z-20"
+      className="w-full  py-10 sm:py-20 px-4 sm:px-8 relative z-20"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 sm:mb-24 px-4 flex flex-col items-center">
