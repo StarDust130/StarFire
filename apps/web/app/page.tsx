@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-dvh  flex flex-col bg-[var(--color-bg)] selection:bg-[var(--color-accent)] selection:text-white">
+    <div className="min-h-dvh flex flex-col bg-[var(--color-bg)] selection:bg-[var(--color-accent)] selection:text-white">
       <Navbar />
 
       <main className="flex-1 w-full flex flex-col relative overflow-hidden">
@@ -25,8 +25,8 @@ export default function LandingPage() {
           transition={{ delay: 0.55, duration: 0.9, ease: "easeOut" }}
           className="w-full relative min-h-[300px] sm:min-h-[450px] md:min-h-[550px] mt-4"
         >
-          {/* Gradient overlay */}
-          <div className="absolute inset-0  z-10 pointer-events-none translate-y-0.5" />
+          {/* RESTORED: Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a09] z-10 pointer-events-none translate-y-0.5" />
 
           {/* Correct Video Implementation */}
           <video
@@ -43,7 +43,8 @@ export default function LandingPage() {
         </motion.div>
 
         {/* --- Social Proof --- */}
-        <div className="w-full  py-20 px-4 sm:px-8 text-white text-center relative z-20">
+        {/* RESTORED: bg-[#0a0a09] background color */}
+        <div className="w-full bg-[#0a0a09] py-20 px-4 sm:px-8 text-white text-center relative z-20">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-[family-name:var(--font-serif)] tracking-tight mb-10 text-balance text-white/90">
             Trusted to execute over 1,000,000 tasks daily
           </h2>

@@ -56,15 +56,9 @@ export default function Navbar() {
         <div className="flex items-center gap-3 z-50">
           <Show when="signed-out">
             <div className="hidden md:flex items-center gap-2">
+            
               <Button
-                href="/sign-in"
-                variant="ghost"
-                className="text-sm px-4 text-white/80 hover:text-white hover:bg-white/10"
-              >
-                Log in
-              </Button>
-              <Button
-                href="/sign-up"
+                href="/dashboard"
                 variant="primary"
                 className="text-sm px-6 py-2.5"
               >
