@@ -7,6 +7,7 @@ import {
   ClerkFailed,
   SignUp,
 } from "@clerk/nextjs";
+import { dark } from "@clerk/ui/themes";
 import AuthSkeleton from "../../AuthSkeleton";
 
 export default function SignUpPage() {
@@ -16,7 +17,11 @@ export default function SignUpPage() {
         <AuthSkeleton />
       </ClerkLoading>
       <ClerkLoaded>
-        <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" />
+        <SignUp 
+          appearance={{
+     theme: dark,
+   }}
+          routing="path" path="/sign-up" signInUrl="/sign-in" />
         <ClerkDegraded>
           <div className="mt-4 p-4 bg-orange-900/20 border border-orange-800 text-orange-300 rounded-xl text-center text-sm font-medium">
             We are experiencing slow authentication systems. Please wait or try

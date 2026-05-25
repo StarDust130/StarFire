@@ -1,9 +1,9 @@
 <div align="center">
 
-  # ⚔️ ॥ StarFire ॥ 🔥
-  <!-- <div align="center">
-  <img src="public/banner.gif" alt="Event Flow Diagram" width="800" />
-</div> -->
+  #  ✨ StarFire ✨ 
+  <div align="center">
+  <img src="public/banner.png" alt="Event Flow Diagram" width="800" />
+</div>
 
   <p align="center">
     <strong>An AI Agent that grows with you. 🪴</strong> 

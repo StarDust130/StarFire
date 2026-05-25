@@ -2,6 +2,7 @@
 
 import { ClerkLoaded, ClerkLoading, ClerkDegraded, ClerkFailed, SignIn } from "@clerk/nextjs";
 import AuthSkeleton from "../../AuthSkeleton";
+import { dark } from '@clerk/ui/themes'
 
 export default function SignInPage() {
   return (
@@ -11,42 +12,10 @@ export default function SignInPage() {
       </ClerkLoading>
       <ClerkLoaded>
         <SignIn
-          appearance={{
-            variables: {
-              colorPrimary: "#0d0c0a",
-              colorText: "#0d0c0a",
-              colorTextSecondary: "#5e5a52",
-              colorBackground: "#ffffff",
-              colorInputBackground: "#f8f7f5",
-              colorInputText: "#0d0c0a",
-              fontFamily: "var(--font-inter), sans-serif",
-              borderRadius: "0.75rem",
-            },
-            elements: {
-              card: "bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-[var(--color-border)] rounded-3xl p-8 max-w-none w-full",
-              headerTitle:
-                "font-[family-name:var(--font-serif)] text-3xl font-bold text-[var(--color-foreground)] tracking-tight",
-              headerSubtitle: "text-[var(--color-muted)] text-base font-medium",
-              socialButtonsBlockButton:
-                "bg-white border border-[var(--color-border)] rounded-xl py-3 hover:bg-[var(--color-bg)] transition-colors shadow-sm text-base font-semibold text-[var(--color-foreground)]",
-              socialButtonsBlockButtonText: "font-semibold text-base",
-              dividerLine: "bg-[var(--color-border)]",
-              dividerText: "text-[var(--color-muted)] bg-transparent",
-              formFieldLabel:
-                "text-sm font-semibold text-[var(--color-foreground)] mb-1.5",
-              formFieldInput:
-                "bg-[var(--color-panel)] border-[var(--color-border)] rounded-xl py-2.5 px-4 text-base focus:ring-2 focus:ring-[var(--color-primary)] font-medium text-[var(--color-foreground)] transition-shadow",
-              formButtonPrimary:
-                "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary)]/90 hover:shadow-md transition-all shadow-sm rounded-xl py-3 text-base font-semibold",
-              footerActionText: "text-[var(--color-muted)] font-medium text-sm",
-              footerActionLink:
-                "text-[var(--color-primary)] font-semibold hover:text-[var(--color-accent)] transition-colors",
-              identityPreviewText:
-                "text-[var(--color-foreground)] font-semibold",
-              identityPreviewEditButtonIcon:
-                "text-[var(--color-muted)] hover:text-[var(--color-primary)]",
-            },
-          }}
+
+         appearance={{
+     theme: dark,
+   }}
           routing="path"
           path="/sign-in"
           signUpUrl="/sign-up"
