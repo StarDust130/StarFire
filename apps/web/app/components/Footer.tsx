@@ -79,7 +79,7 @@ export default function Footer() {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="csyadav0513@email.com?subject=Saw%20your%20StarFire%20project🌟&body=Hello%20Chandrashekhar.%20Saw%20your%20StarFire%20project,%20love%20it,%20let's%20talk."
+                  href="mailto:csyadav0513@email.com?subject=Saw%20StarFire.%20Take%20my%20money.%20%F0%9F%9A%80&body=Thor%2C%0D%0A%0D%0AI%20saw%20what%20you%20are%20building%20with%20StarFire.%20My%20current%20workflows%20are%20garbage%20and%20I%20need%20your%20AI%20to%20automate%20my%20life%20before%20I%20lose%20my%20mind.%0D%0A%0D%0ALet's%20talk."
                   className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all"
                 >
                   <svg
