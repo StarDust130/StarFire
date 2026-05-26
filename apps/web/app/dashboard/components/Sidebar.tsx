@@ -16,6 +16,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { dark } from "@clerk/ui/themes";
 
 const navItems = [
   { name: "Command Center", href: "/dashboard", icon: LayoutDashboard },
@@ -100,9 +101,7 @@ export function Sidebar({
       <div className="p-4 border-t border-white/10 flex items-center gap-3 bg-black/40 shrink-0">
         <UserButton
           appearance={{
-            elements: {
-              userButtonAvatarBox: "w-9 h-9 border border-white/20 shadow-sm",
-            },
+            theme: dark,
           }}
         />
         <div className="flex flex-col">
