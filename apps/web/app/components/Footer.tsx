@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Button from "./Button";
 import Logo from "./Logo";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -46,7 +47,7 @@ export default function Footer() {
               </p>
               <div className="flex gap-4">
                 {/* X (Twitter) Icon */}
-                <a
+                <Link
                   href="https://x.com/the_csyadav"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -59,9 +60,9 @@ export default function Footer() {
                   >
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
-                </a>
+                </Link>
                 {/* GitHub Icon */}
-                <a
+                <Link
                   href="https://github.com/StarDust130/StarFire"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -74,12 +75,12 @@ export default function Footer() {
                   >
                     <path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
                   </svg>
-                </a>
+                </Link>
                 {/* Email / Hire Me Icon */}
-                <a
+                <Link
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="csyadav0513@email.com?subject=Saw%20your%20StarFire%20project🌟&body=Hello%20Chandrashekhar.%20Saw%20your%20StarFire%20project,%20love%20it,%20let's%20talk."
+                  href="mailto:csyadav0513@email.com?subject=Saw%20StarFire.%20Take%20my%20money.%20%F0%9F%9A%80&body=Thor%2C%0D%0A%0D%0AI%20saw%20what%20you%20are%20building%20with%20StarFire.%20My%20current%20workflows%20are%20garbage%20and%20I%20need%20your%20AI%20to%20automate%20my%20life%20before%20I%20lose%20my%20mind.%0D%0A%0D%0ALet's%20talk."
                   className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all"
                 >
                   <svg
@@ -94,52 +95,52 @@ export default function Footer() {
                     <rect width="20" height="16" x="2" y="4" rx="2" />
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="md:col-span-8 lg:col-span-7 grid grid-cols-2 gap-8 text-center sm:text-left">
               <div className="flex flex-col gap-4">
                 <h4 className="font-semibold text-white/90 mb-2">Product</h4>
-                <a
+                <Link
                   href="#features"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Features
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#how-it-works"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   How it works
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#pricing"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Pricing
-                </a>
+                </Link>
               </div>
               <div className="flex flex-col gap-4">
                 <h4 className="font-semibold text-white/90 mb-2">Legal</h4>
-                <a
+                <Link
                   href="/privacy"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Privacy Policy
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/terms"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Terms of Service
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-white/50 hover:text-white text-sm transition-colors"
                 >
                   Cookie Policy
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -150,7 +151,7 @@ export default function Footer() {
             </p>
             <p>
               Created by{" "}
-              <a
+              <Link
                 href="http://chandrashekhar.me/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -159,7 +160,7 @@ export default function Footer() {
                 ChandraShekhar{""} 🌟
                 {/* Expanding yellow underline effect */}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gradient-to-r from-yellow-400 to-yellow-200 transition-all duration-300 group-hover:w-full rounded-full" />
-              </a>
+              </Link>
             </p>
           </div>
         </div>

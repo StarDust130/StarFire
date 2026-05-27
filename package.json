@@ -1,5 +1,5 @@
 {
-  "name": "StarFire",
+  "name": "starfire",
   "private": true,
   "packageManager": "pnpm@11.0.0",
   "scripts": {

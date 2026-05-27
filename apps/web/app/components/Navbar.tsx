@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Show, UserButton } from "@clerk/nextjs";
 import Button from "./Button";
 import Logo from "./Logo";
+import { dark } from "@clerk/ui/themes";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,7 +34,11 @@ export default function Navbar() {
       >
         {/* Logo */}
         <div className="z-50">
-          <Logo href="/" size={32} className="group transition-transform group-hover:scale-105" />
+          <Logo
+            href="/"
+            size={32}
+            className="group transition-transform group-hover:scale-105"
+          />
         </div>
 
         {/* Desktop Links */}
@@ -56,7 +61,6 @@ export default function Navbar() {
         <div className="flex items-center gap-3 z-50">
           <Show when="signed-out">
             <div className="hidden md:flex items-center gap-2">
-            
               <Button
                 href="/dashboard"
                 variant="primary"
@@ -75,9 +79,16 @@ export default function Navbar() {
               >
                 Dashboard
               </Button>
-              <UserButton />
+
+              <UserButton
+                appearance={{
+                  theme: dark,
+                }}
+                
+              />
             </div>
           </Show>
+
 
           <button
             className="md:hidden p-2.5 text-white bg-white/5 backdrop-blur-md rounded-full transition-all focus:outline-none hover:bg-white/10"
@@ -152,9 +163,6 @@ export default function Navbar() {
                 >
                   Go to Dashboard
                 </Button>
-                <div className="flex justify-center mt-4">
-                  <UserButton />
-                </div>
               </Show>
             </div>
           </motion.div>
