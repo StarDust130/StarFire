@@ -29,6 +29,17 @@ export function ChatWindow() {
   const STORAGE_KEY = "starfire_chat_history";
   const TTL_MS = 24 * 60 * 60 * 1000;
 
+  // Listen for the 'New Chat' signal from the Widget Header
+  useEffect(() => {
+    const handleClearChat = () => {
+      setMessages([]); 
+      setHasStarted(false); // <-- CRITICAL: Reset the greeting state
+    };
+
+    window.addEventListener("clear-starfire-chat", handleClearChat);
+    return () => window.removeEventListener("clear-starfire-chat", handleClearChat);
+  }, []);
+
   // Load from Storage
   useEffect(() => {
     setIsMounted(true);
@@ -71,125 +82,126 @@ export function ChatWindow() {
     adjustHeight(e.target);
   };
 
-const executePipeline = async (userText: string) => {
-  const userMsg: Message = {
-    id: Date.now().toString(),
-    role: "user",
-    content: userText.trim(),
-  };
+  const executePipeline = async (userText: string) => {
+    const userMsg: Message = {
+      id: Date.now().toString(),
+      role: "user",
+      content: userText.trim(),
+    };
 
-  setMessages((prev) => [...prev.filter((m) => !m.isError), userMsg]);
-  setInput("");
-  setIsLoading(true);
-  setIsThinking(true);
-  setHasStarted(true);
+    setMessages((prev) => [...prev.filter((m) => !m.isError), userMsg]);
+    setInput("");
+    setIsLoading(true);
+    setIsThinking(true);
+    setHasStarted(true);
 
-  if (textareaRef.current) textareaRef.current.style.height = "auto";
-  abortControllerRef.current = new AbortController();
+    if (textareaRef.current) textareaRef.current.style.height = "auto";
+    abortControllerRef.current = new AbortController();
 
-  try {
-    const endpoint =
-      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/chat` ||
-      "http://localhost:8080/api/v1/chat";
+    try {
+      const endpoint =
+        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/chat` ||
+        "http://localhost:8080/api/v1/chat";
 
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: "9eba1881-f6aa-4d0e-a85d-ec67458b8a76",
-        content: userText,
-      }),
-      signal: abortControllerRef.current.signal,
-    });
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: "9eba1881-f6aa-4d0e-a85d-ec67458b8a76",
+          content: userText,
+        }),
+        signal: abortControllerRef.current.signal,
+      });
 
-    // CRITICAL GUARD: Stop immediately if the backend returns an error (like a 404 HTML page)
-    if (!response.ok) {
-      throw new Error(
-        `Backend Error: ${response.status} ${response.statusText}`,
-      );
-    }
-
-    if (!response.body) throw new Error("No stream");
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-
-    const botMsgId = Date.now().toString() + "_ai";
-    let accumulatedText = "";
-    let firstChunkReceived = false;
-    let buffer = "";
-
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
-
-      if (!firstChunkReceived) {
-        setIsThinking(false);
-        firstChunkReceived = true;
+      // CRITICAL GUARD: Stop immediately if the backend returns an error (like a 404 HTML page)
+      if (!response.ok) {
+        throw new Error(
+          `Backend Error: ${response.status} ${response.statusText}`,
+        );
       }
 
-      // Add new incoming data to our buffer
-      buffer += decoder.decode(value, { stream: true });
+      if (!response.body) throw new Error("No stream");
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
 
-      // Split by newline. Streams often send multiple JSON objects separated by \n
-      const lines = buffer.split("\n");
+      const botMsgId = Date.now().toString() + "_ai";
+      let accumulatedText = "";
+      let firstChunkReceived = false;
+      let buffer = "";
 
-      // The last line might be incomplete (cut off mid-network transfer), so we keep it in the buffer
-      buffer = lines.pop() || "";
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
 
-      for (const line of lines) {
-        const trimmedLine = line.trim();
-        if (!trimmedLine) continue;
+        if (!firstChunkReceived) {
+          setIsThinking(false);
+          firstChunkReceived = true;
+        }
 
-        // Strip "data: " prefix if your backend uses Server-Sent Events
-        const jsonStr = trimmedLine.startsWith("data: ")
-          ? trimmedLine.slice(6)
-          : trimmedLine;
+        // Add new incoming data to our buffer
+        buffer += decoder.decode(value, { stream: true });
 
-        if (jsonStr === "[DONE]") break;
+        // Split by newline. Streams often send multiple JSON objects separated by \n
+        const lines = buffer.split("\n");
 
-        try {
-          // Parse the JSON exactly as you specified: {"reply": " today"}
-          const parsed = JSON.parse(jsonStr);
+        // The last line might be incomplete (cut off mid-network transfer), so we keep it in the buffer
+        buffer = lines.pop() || "";
 
-          if (parsed.reply !== undefined) {
-            accumulatedText += parsed.reply;
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (!trimmedLine) continue;
 
-            setMessages((prev) => {
-              const exists = prev.find((m) => m.id === botMsgId);
-              if (exists) {
-                return prev.map((m) =>
-                  m.id === botMsgId ? { ...m, content: accumulatedText } : m,
-                );
-              }
-              return [
-                ...prev,
-                { id: botMsgId, role: "assistant", content: accumulatedText },
-              ];
-            });
+          // Strip "data: " prefix if your backend uses Server-Sent Events
+          const jsonStr = trimmedLine.startsWith("data: ")
+            ? trimmedLine.slice(6)
+            : trimmedLine;
+
+          if (jsonStr === "[DONE]") break;
+
+          try {
+            // Parse the JSON exactly as you specified: {"reply": " today"}
+            const parsed = JSON.parse(jsonStr);
+
+            if (parsed.reply !== undefined) {
+              accumulatedText += parsed.reply;
+
+              setMessages((prev) => {
+                const exists = prev.find((m) => m.id === botMsgId);
+                if (exists) {
+                  return prev.map((m) =>
+                    m.id === botMsgId ? { ...m, content: accumulatedText } : m,
+                  );
+                }
+                return [
+                  ...prev,
+                  { id: botMsgId, role: "assistant", content: accumulatedText },
+                ];
+              });
+            }
+          } catch (e) {
+            console.error("Failed to parse chunk:", trimmedLine);
           }
-        } catch (e) {
-          console.error("Failed to parse chunk:", trimmedLine);
         }
       }
+    } catch (err: any) {
+      if (err.name !== "AbortError") {
+        console.error("Pipeline failure:", err);
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Date.now().toString(),
+            role: "assistant",
+            content:
+              "Connection failed. Please check if the backend is running.",
+            isError: true,
+          },
+        ]);
+      }
+    } finally {
+      setIsLoading(false);
+      setIsThinking(false);
     }
-  } catch (err: any) {
-    if (err.name !== "AbortError") {
-      console.error("Pipeline failure:", err);
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: Date.now().toString(),
-          role: "assistant",
-          content: "Connection failed. Please check if the backend is running.",
-          isError: true,
-        },
-      ]);
-    }
-  } finally {
-    setIsLoading(false);
-    setIsThinking(false);
-  }
-};
+  };
 
   const handleSubmit = (e?: React.FormEvent | React.KeyboardEvent) => {
     if (e) e.preventDefault();
@@ -252,15 +264,17 @@ const executePipeline = async (userText: string) => {
             </motion.div>
           )}
 
-          {messages.map((msg) => (
-            <MessageBubble
-              key={msg.id}
-              msg={msg}
-              copiedId={copiedId}
-              onCopy={handleCopy}
-              onRetry={() => executePipeline(msg.content)}
-            />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {messages.map((msg) => (
+              <MessageBubble
+                key={msg.id}
+                msg={msg}
+                copiedId={copiedId}
+                onCopy={handleCopy}
+                onRetry={() => executePipeline(msg.content)}
+              />
+            ))}
+          </AnimatePresence>
 
           {isThinking && (
             <div className="flex w-full justify-start items-center h-8">
@@ -301,13 +315,14 @@ const executePipeline = async (userText: string) => {
         )}
       </AnimatePresence>
 
-      <ChatInput
+   <ChatInput
         input={input}
         isLoading={isLoading}
         textareaRef={textareaRef}
         onChange={handleInputChange}
         onSubmit={handleSubmit}
         onStop={() => abortControllerRef.current?.abort()}
+        setInput={setInput} 
       />
     </div>
   );
