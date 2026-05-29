@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
-import Button from "./Button";
+import Button from "./ui/Button";
 
 export default function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
