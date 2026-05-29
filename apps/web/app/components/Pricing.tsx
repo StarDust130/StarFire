@@ -1,5 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
-import Button from "./Button";
+import Button from "./ui/Button";
 
 export default function Pricing() {
   return (

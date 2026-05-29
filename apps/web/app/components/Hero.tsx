@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
-import Button from "./Button";
+import Button from "./ui/Button";
 
 export default function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -42,7 +42,7 @@ export default function Hero() {
         <Button
           href="/dashboard"
           variant="primary"
-          className="w-full sm:w-auto px-8 py-4 sm:px-10 text-[15px] sm:text-base group"
+          className="w-full sm:w-auto px-8 py-4 sm:px-10 text-[15px] sm:text-base group "
         >
           Get Started for Free
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" />

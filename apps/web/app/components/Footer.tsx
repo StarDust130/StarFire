@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Button from "./Button";
+import Button from "./ui/Button";
 import Logo from "./Logo";
 import Link from "next/link";
 
