@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { History, MessageSquare, X } from "lucide-react";
+import { BadgePlus, History, X } from "lucide-react";
 import { ChatWindow } from "@/app/components/chat/ChatWindow";
 import Logo from "@/app/components/Logo";
 import Link from "next/link";
@@ -11,6 +11,16 @@ import { Tooltip } from "@/app/components/ui/Tooltip";
 
 export default function AIChatWidget() {
   const { isOpen, openChat, closeChat } = useChatDrawer();
+
+const handleNewChat = () => {
+    // 1. Purge local storage
+    localStorage.removeItem("starfire_chat_history");
+    
+    // 2. Broadcast a custom event to the rest of the app
+    window.dispatchEvent(new Event("clear-starfire-chat"));
+    
+    console.log("🧹 [Storage] Clear signal broadcasted.");
+  };
 
   return (
     <>
@@ -47,9 +57,16 @@ export default function AIChatWidget() {
 
               <div className="flex items-center gap-1">
                 <button
+                  onClick={handleNewChat}
+                  className="p-2 text-[var(--color-muted)] hover:text-white transition-colors hover:bg-[var(--color-card)] rounded-lg cursor-pointer"
+                  title="New Chat"
+                >
+                  <BadgePlus className="w-4 h-4" />
+                </button>
+                <button
                   onClick={closeChat}
-                  className="p-2 text-[var(--color-muted)] hover:text-white transition-colors hover:bg-[var(--color-card)] rounded-lg"
-                  title="History"
+                  className="p-2 text-[var(--color-muted)] hover:text-white transition-colors hover:bg-[var(--color-card)] rounded-lg cursor-pointer"
+                  title="Chat Memory"
                 >
                   <Link href="/dashboard/memory">
                     <History className="w-4 h-4" />
@@ -57,9 +74,10 @@ export default function AIChatWidget() {
                 </button>
                 <button
                   onClick={closeChat}
-                  className="p-2 text-[var(--color-muted)] hover:text-white transition-colors hover:bg-[var(--color-card)] rounded-lg"
+                  className="p-2 text-[var(--color-muted)] hover:text-white transition-colors hover:bg-[var(--color-card)] rounded-lg cursor-pointer"
+                  title="Close Chat"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
