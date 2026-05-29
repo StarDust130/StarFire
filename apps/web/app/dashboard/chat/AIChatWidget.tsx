@@ -7,6 +7,7 @@ import Logo from "@/app/components/Logo";
 import Link from "next/link";
 import { useChatDrawer } from "./ChatDrawerContext";
 import Image from "next/image";
+import { Tooltip } from "@/app/components/ui/Tooltip";
 
 export default function AIChatWidget() {
   const { isOpen, openChat, closeChat } = useChatDrawer();
@@ -41,7 +42,7 @@ export default function AIChatWidget() {
             {/* Drawer Header */}
             <div className="shrink-0 flex items-center justify-between px-4 h-14 border-b border-[var(--color-border)] bg-[var(--color-panel)]">
               <div className="flex items-center gap-2">
-                <Logo ExtraText="Agent" />
+                <Logo extraText="Agent" />
               </div>
 
               <div className="flex items-center gap-1">
@@ -82,35 +83,35 @@ export default function AIChatWidget() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             onClick={openChat}
-            className="fixed bottom-3 right-3 md:bottom-5 md:right-5 z-[80] group cursor-pointer select-none select-none"
+            className="fixed bottom-3 right-3 md:bottom-5 md:right-5 z-[80] cursor-pointer outline-none"
           >
-            <div className="relative">
-              {/* Hover bubble */}
-              <div className="absolute right-[92%] top-6 pointer-events-none opacity-0 translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 hidden md:block">
-                <div className="whitespace-nowrap rounded-2xl border border-white/10 bg-[#0B0B0B]/95 px-4 py-2 text-sm text-zinc-200 shadow-2xl backdrop-blur-xl">
-                  Talk to StarFire ✨
-                </div>
+            {/* Reusable Tooltip Wrapper applied here */}
+            <Tooltip
+              content="Talk to StarFire ✨"
+              position="left"
+              className="hidden md:block"
+            >
+              <div className="relative flex items-center justify-center">
+                {/* Soft shadow/depth */}
+                <div className="absolute inset-0 rounded-full bg-black/40 blur-2xl scale-90" />
+
+                {/* Character */}
+                <Image
+                  src="/starfire-3.png"
+                  alt="StarFire"
+                  width={128}
+                  height={128}
+                  priority
+                  draggable={false}
+                  className="
+                    object-contain
+                    select-none
+                    pointer-events-none
+                    drop-shadow-[0_12px_30px_rgba(0,0,0,0.55)]
+                  "
+                />
               </div>
-
-              {/* Soft shadow/depth */}
-              <div className="absolute inset-0 rounded-full bg-black/40 blur-2xl scale-90" />
-
-              {/* Character */}
-              <Image
-                src="/starfire-3.png"
-                alt="StarFire"
-                width={128}
-                height={128}
-                priority
-                draggable={false}
-                className="
-    object-contain
-    select-none
-    pointer-events-none
-    drop-shadow-[0_12px_30px_rgba(0,0,0,0.55)]
-  "
-              />
-            </div>
+            </Tooltip>
           </motion.button>
         )}
       </AnimatePresence>
