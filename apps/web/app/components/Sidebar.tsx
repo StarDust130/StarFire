@@ -53,13 +53,14 @@ export function Sidebar({
   const renderSidebarContent = (collapsed: boolean, isMobile: boolean) => (
     <div className="flex flex-col h-full w-full">
       {/* Header Area */}
-      <div className="relative h-16 flex items-center justify-center border-b border-[var(--color-border)] shrink-0 overflow-hidden">
+      {/* Added 'group' to orchestrate hover states for children */}
+      <div className="relative h-16 flex items-center justify-center border-b border-[var(--color-border)] shrink-0 overflow-hidden group">
         <Link
           href="/dashboard"
-          className={`absolute left-5 flex items-center gap-3 transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+          className={`absolute flex items-center gap-3 transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
             collapsed
-              ? "opacity-0 scale-95 pointer-events-none"
-              : "opacity-100 scale-100"
+              ? "left-1/2 -translate-x-1/2 opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none"
+              : "left-5 opacity-100 scale-100 pointer-events-auto"
           }`}
           onClick={(e) => {
             e.stopPropagation();
@@ -67,7 +68,8 @@ export function Sidebar({
             if (isMobile) setMobileOpen(false);
           }}
         >
-          <Logo className="!gap-2" />
+          {/* Dynamically hide text when collapsed */}
+          <Logo className="!gap-2" showText={!collapsed} />
         </Link>
 
         {/* Desktop Toggle */}
@@ -77,8 +79,10 @@ export function Sidebar({
               e.stopPropagation();
               setIsCollapsed(!isCollapsed);
             }}
-            className={`absolute flex items-center justify-center rounded-xl text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-card)] border border-transparent hover:border-[var(--color-border)] transition-all duration-300 outline-none cursor-pointer ${
-              collapsed ? "relative w-11 h-11" : "right-4 w-9 h-9"
+            className={`absolute flex items-center justify-center rounded-xl text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-card)] border border-transparent hover:border-[var(--color-border)] transition-all duration-300 outline-none cursor-pointer z-10 ${
+              collapsed
+                ? "left-1/2 -translate-x-1/2 w-11 h-11 opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto"
+                : "right-4 w-9 h-9 opacity-100 scale-100 pointer-events-auto"
             }`}
             title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
           >
@@ -161,7 +165,7 @@ export function Sidebar({
 
       {/* User Section */}
       <div
-        className={`relative h-18 flex items-center border-t border-border bg-(--color-bg) shrink-0 transition-all duration-300 group cursor-pointer hover:bg-[var(--color-card)] ${
+        className={`relative h-18 flex items-center border-t border-border bg-(--color-bg) shrink-0 transition-all duration-300 cursor-pointer hover:bg-[var(--color-card)] ${
           collapsed ? "justify-center" : "px-4 gap-3"
         }`}
         onClick={(e) => {
@@ -256,6 +260,7 @@ export function MobileHeader({
           <Menu className="w-5 h-5" />
         </button>
         <Link href="/dashboard" className="flex items-center gap-2">
+          {/* Mobile header always open, so we don't pass collapsed here */}
           <Logo size={24} className="!gap-1.5" />
         </Link>
       </div>
