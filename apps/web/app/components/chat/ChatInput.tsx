@@ -179,7 +179,7 @@ export function ChatInput({
                     transition={{ duration: 0.15 }}
                     type="submit"
                     disabled={!input.trim()}
-                    className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed bg-zinc-100 text-zinc-900 disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-white active:scale-95 shadow-sm outline-none"
+                    className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed bg-zinc-100 text-zinc-900 disabled:bg-zinc-800 disabled:text-zinc-600 hover:bg-white active:scale-95 shadow-sm outline-none cursor-pointer"
                   >
                     <ArrowUp className="w-5 h-5 stroke-[2.5px]" />
                   </motion.button>
