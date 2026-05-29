@@ -46,7 +46,7 @@ export default function Logo({
         <span className="text-white font-bold text-xl sm:text-2xl tracking-tight transition-opacity duration-300 group-hover:opacity-90 flex items-center">
           StarFire
           {extraText && (
-            <span className="ml-1.5 text-sm font-medium text-gray-400">
+            <span className="ml-1.5 font-bold ">
               {extraText}
             </span>
           )}
