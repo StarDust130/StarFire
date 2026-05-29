@@ -8,6 +8,7 @@ type LogoProps = {
   href?: string;
   className?: string;
   size?: number;
+  ExtraText?: string;
 };
 
 export default function Logo({
@@ -15,6 +16,7 @@ export default function Logo({
   href,
   className = "",
   size,
+  ExtraText,
 }: LogoProps) {
   const iconStyle = size ? { width: size, height: size } : undefined;
   const iconSizes = size ? `${size}px` : "(max-width: 640px) 32px, 40px";
@@ -39,6 +41,9 @@ export default function Logo({
       {showText && (
         <span className="text-white font-bold text-xl sm:text-2xl tracking-tight transition-opacity duration-300 group-hover:opacity-90">
           StarFire
+          {ExtraText && (
+            <span className=""> {ExtraText}</span>
+          )}
         </span>
       )}
     </div>
