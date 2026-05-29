@@ -15,7 +15,13 @@ import { telegramRouter } from "./modules/telegram/telegram.route.js";
 
 export const app: Express = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 app.use(helmet());
 app.use(express.json());
 
