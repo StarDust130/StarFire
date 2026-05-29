@@ -10,15 +10,17 @@ export async function generateAIResponse(
   userProfile?: string,
   semanticContext?: string,
 ) {
-  try {
-    const completion = await groq.chat.completions.create({
-      model: "llama-3.1-8b-instant",
-      temperature: 0.5,
-      max_completion_tokens: 300,
-      messages: [
-        {
-          role: "system",
-          content: `
+  // Do not use try/catch here. Let the stream throw to the controller
+  // so the connection can be properly terminated.
+  return await groq.chat.completions.create({
+    model: "llama-3.1-8b-instant",
+    temperature: 0.5,
+    max_completion_tokens: 300,
+    stream: true, // Active stream
+    messages: [
+      {
+        role: "system",
+        content: `
 You are StarFire 👑
 
 An intelligent, calm, emotionally aware AI companion.
@@ -137,20 +139,8 @@ Feel like a trustworthy intelligent companion, not a corporate chatbot or exagge
 ${userProfile || ""}
 ${semanticContext || ""}
 `,
-        },
-
-        ...messages,
-      ],
-    });
-
-    const reply = completion.choices[0]?.message?.content
-      ?.trim()
-      .replace(/^"(.*)"$/, "$1");
-
-    return reply || "Arre bhai abhi nahi ho raha, baad mein try kar 💦";
-  } catch (error) {
-    console.error("Groq API Error:", error);
-
-    return "Bhai system mein thodi dikkat hai, 2 minute baad try kar 👀";
-  }
+      },
+      ...messages,
+    ],
+  });
 }
