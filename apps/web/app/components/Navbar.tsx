@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Show, UserButton } from "@clerk/nextjs";
-import Button from "./Button";
+import Button from "./ui/Button";
 import Logo from "./Logo";
 import { dark } from "@clerk/ui/themes";
 
@@ -84,11 +84,9 @@ export default function Navbar() {
                 appearance={{
                   theme: dark,
                 }}
-                
               />
             </div>
           </Show>
-
 
           <button
             className="md:hidden p-2.5 text-white bg-white/5 backdrop-blur-md rounded-full transition-all focus:outline-none hover:bg-white/10"
